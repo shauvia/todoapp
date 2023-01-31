@@ -1,0 +1,78 @@
+/* Charcoal rgb(38, 70, 83);
+Persian Green rgb(42, 157, 143)
+Maize Crayola rgb(233, 196, 106)
+Sandy Brown rgb(244, 162, 97)
+Burnt Sienna rgb(231, 111, 81) */
+
+
+body {
+  background: rgb(98,131,149);
+  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);
+  height: 100vh;
+  font-family: 'Space Grotesk', sans-serif;
+  /* font-size: 1em; */
+}
+/* 
+font-family: 'Tajawal', sans-serif; */
+
+#addTask {
+  outline: 1px solid yellow;
+  /* text-align: center; */
+  margin-top: 10em;
+  height: 10em;
+  display: grid; 
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+   'formAddTask';
+  
+}
+
+form {
+  outline: 2px solid rgb(0, 204, 255);
+  grid-area: formAddTask;
+  display: grid;
+  width: 25em;
+  justify-self: center;
+  grid-template-columns: 1fr 1fr ;
+  column-gap: 1%;
+  grid-template-areas: 
+   'taskInput taskBtn';
+}
+
+#task {
+  grid-area: taskInput;
+  width: 23em;
+  height: 3em;
+  padding: 0;
+  border: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#addTaskBtn { /* button with plus sign*/
+  grid-area: taskBtn;
+  background-color: rgb(245, 93, 62);
+  border: none;
+  transition-duration: 0.4s;
+  width: 3em;
+  height: 3em;
+  padding: 12px;
+  color: rgb(243, 243, 244);
+  justify-self: center;
+}
+
+#addTaskBtn:hover {
+  background-color: rgb(150, 64, 47); 
+  color: white;
+  cursor: pointer;
+}
+#horizontal, #vertical {
+  width: 100%;
+  height: 2px;
+  background-color: aliceblue;
+}
+
+#vertical {
+  position: relative;
+  bottom: 2px;
+  transform: rotate(90deg);
+}
