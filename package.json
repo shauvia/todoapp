@@ -2,7 +2,7 @@
   "name": "todoapp",
   "version": "1.0.0",
   "description": "App that creates to do list.",
-  "main": "index.js",
+  "main": "c_index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server/server.js",

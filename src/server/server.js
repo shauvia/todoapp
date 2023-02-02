@@ -18,4 +18,21 @@ function listening(){
   console.log(`runnning on localhost ${port}`);
 }
 
+let taskArr = [];
+
+
+app.post('/tasks', async function(req, res){
+  try{
+    const singleTask = {
+      taskName: ""
+    }
+    singleTask.taskName = req.body.userTask;
+    taskArr.push(singleTask);
+    console.log("taskArr", taskArr);
+  }catch(error){
+    res.status(500).send();
+    console.log('Error on the server, posting task failed: ', error);
+  }  
+})
+
 const server = app.listen(port, listening);

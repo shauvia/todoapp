@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  /* text-align: center; */\r\n  margin-top: 10em;\r\n  height: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-areas: \r\n   'formAddTask';\r\n  \r\n}\r\n\r\nform {\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign*/\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}", "",{"version":3,"sources":["webpack://./src/client/styles/style.css"],"names":[],"mappings":"AAAA;;;;gCAIgC;;;AAGhC;EACE,2BAA2B;EAC3B,oFAAoF;EACpF,aAAa;EACb,wCAAwC;EACxC,oBAAoB;AACtB;AACA;qCACqC;;AAErC;EACE,yBAAyB;EACzB,wBAAwB;EACxB,gBAAgB;EAChB,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B;gBACc;;AAEhB;;AAEA;EACE,mCAAmC;EACnC,sBAAsB;EACtB,aAAa;EACb,WAAW;EACX,oBAAoB;EACpB,+BAA+B;EAC/B,cAAc;EACd;sBACoB;AACtB;;AAEA;EACE,oBAAoB;EACpB,WAAW;EACX,WAAW;EACX,UAAU;EACV,SAAS;EACT,wCAAwC;AAC1C;;AAEA,cAAc,yBAAyB;EACrC,kBAAkB;EAClB,kCAAkC;EAClC,YAAY;EACZ,yBAAyB;EACzB,UAAU;EACV,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,oBAAoB;AACtB;;AAEA;EACE,kCAAkC;EAClC,YAAY;EACZ,eAAe;AACjB;AACA;EACE,WAAW;EACX,WAAW;EACX,2BAA2B;AAC7B;;AAEA;EACE,kBAAkB;EAClB,WAAW;EACX,wBAAwB;AAC1B","sourcesContent":["/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  /* text-align: center; */\r\n  margin-top: 10em;\r\n  height: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-areas: \r\n   'formAddTask';\r\n  \r\n}\r\n\r\nform {\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign*/\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -479,6 +479,65 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/client/js/app.js":
+/*!******************************!*\
+  !*** ./src/client/js/app.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "initializeForms": () => (/* binding */ initializeForms)
+/* harmony export */ });
+const url = ""; 
+const toDoApi = "/tasks"
+
+function gatherUserInput(){
+  const task = document.getElementById("task").value;
+  const userInput = {
+    userTask: task
+  }
+  return userInput;
+}
+
+function clearUserInput(){
+  document.getElementById("task").value = "";
+}
+
+async function addTask(url, toDoApi, uInput){
+  console.log("addTask", url, toDoApi, uInput)
+  console.log("app.js,addTask URL: ", url+toDoApi,)
+  let response = await fetch(url+toDoApi, { 
+    method: 'POST' , 
+    body: JSON.stringify(uInput),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (!response.ok) {
+    let err = new Error('fetch failed, addTrip and get forecast, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
+    throw err;
+  }
+  let content = await response.json(); // dobranie sie do tresci jest asynchroniczne, trzeba czekac; .json() oddżejsonowuje
+  return content;
+}
+
+
+async function addTaskHandler(event){
+  const userData = gatherUserInput();
+  clearUserInput()
+  await addTask(url, toDoApi, userData);
+  
+}
+
+function initializeForms() {
+  document.getElementById('addTaskBtn').addEventListener('click', addTaskHandler);
+}
+
+
+
+/***/ }),
+
 /***/ "./src/client/styles/reset.css":
 /*!*************************************!*\
   !*** ./src/client/styles/reset.css ***!
@@ -669,8 +728,12 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_reset_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/reset.css */ "./src/client/styles/reset.css");
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/style.css */ "./src/client/styles/style.css");
+/* harmony import */ var _js_app_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/app.js */ "./src/client/js/app.js");
 
 
+
+
+(0,_js_app_js__WEBPACK_IMPORTED_MODULE_2__.initializeForms)();
 })();
 
 /******/ })()
