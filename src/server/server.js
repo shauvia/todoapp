@@ -21,7 +21,7 @@ function listening(){
 let taskArr = [];
 
 
-app.post('/tasks', async function(req, res){
+app.post('/task', async function(req, res){
   try{
     const singleTask = {
       taskName: ""
@@ -29,9 +29,20 @@ app.post('/tasks', async function(req, res){
     singleTask.taskName = req.body.userTask;
     taskArr.push(singleTask);
     console.log("taskArr", taskArr);
+    res.send("OK");
   }catch(error){
     res.status(500).send();
     console.log('Error on the server, posting task failed: ', error);
+  }  
+})
+
+app.get('/tasks', async function (req, res){
+  try{
+    console.log("Sending tasks", taskArr.length);
+    res.send(taskArr);
+  } catch(error){
+    console.log('Error on the server, getting trip list failed: ', error)
+    res.status(500).send();
   }  
 })
 
