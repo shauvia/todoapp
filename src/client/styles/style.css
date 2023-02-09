@@ -17,13 +17,13 @@ font-family: 'Tajawal', sans-serif; */
 
 #addTask {
   outline: 1px solid yellow;
-  /* text-align: center; */
   margin-top: 10em;
-  height: 10em;
   display: grid; 
   grid-template-columns: 1fr;
+  grid-template-rows:repeat(2, auto); ;
   grid-template-areas: 
-   'formAddTask';
+   'formAddTask'
+   'list';
   
 }
 
@@ -76,3 +76,58 @@ form {
   bottom: 2px;
   transform: rotate(90deg);
 }
+
+#taskList {
+  grid-area: list;
+  justify-self: center;
+  width: 25em;
+  margin-top: 2em;
+  margin-bottom: 2em;;
+  outline: 2px solid rgb(255, 0, 140);;
+}
+
+#taskList li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1em;
+  font-size: 1.2em;
+  height: 2.5em;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  background-color: rgba(98, 131, 149, 0.781);
+}
+
+input[type="checkbox"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */
+  appearance: none;
+  background-color: #fff; 
+  margin: 0; 
+  /* to remove defoult styling of check boxes */
+  font: inherit;
+  color: rgba(15, 64, 90, 0.781);;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.13em solid currentColor;
+  border-radius: 0.15em;
+  /* transform: translateY(-0.075em);  moves checkbox a bit higher to make one line with a label */
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: CanvasText;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */
+  transform: scale(1);
+}
+
+/* var(--form-control-color);*/

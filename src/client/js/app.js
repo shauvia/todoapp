@@ -18,7 +18,13 @@ function displayTaskList(tasks){
   let ul = document.getElementById('taskList');
   for( let i = 0; i < tasks.length; i++){
     let li = document.createElement("li");
-    li.innerHTML = tasks[i].taskName;
+    let input = document.createElement("input");
+    input.setAttribute("type", "checkbox");
+    let label = document.createElement("label")
+    label.innerHTML = tasks[i].taskName;
+    li.appendChild(input)
+    li.appendChild(label)
+    // li.innerHTML = tasks[i].taskName;
     // let tripNum = trips[i].tripID;
     // let eventHandler = async (event) => {
     //   await fetchAndDisplayTrip(tripNum);
@@ -26,6 +32,13 @@ function displayTaskList(tasks){
     // li.addEventListener('click', eventHandler);
     // li.setAttribute("id", trips[i].tripID);
     ul.appendChild(li);
+  }
+}
+
+function clearTaskList(){
+  let ul = document.getElementById('taskList');
+  while (ul.firstChild) { // code from https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild 
+    ul.removeChild(ul.firstChild); 
   }
 }
 
@@ -88,6 +101,7 @@ async function addTaskHandler(event){
   console.log("1");
   let listOfTasks = await getTask(url, tasks);
   console.log("listOfTasks", listOfTasks)
+  clearTaskList();
   displayTaskList(listOfTasks);
 
   
