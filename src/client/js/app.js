@@ -22,6 +22,7 @@ function displayTaskList(tasks){
     input.setAttribute("type", "checkbox");
     let label = document.createElement("label")
     label.innerHTML = tasks[i].taskName;
+    input.checked = tasks[i].checked; // is suposed to be setting checked status according to the list from server 
     let taskId = tasks[i].taskId;
     let eventHandler = async (event) => {
       await changeStatus(taskId, input.checked);
@@ -111,6 +112,14 @@ async function getTasks(url, taskList){
   console.log("getTaskContent", content)
   return content;
 }
+ 
+async function loadWindowHandler(event){
+  clearUserInput()
+  let listOfTasks = await getTasks(url, tasks);
+  await displayTaskList(listOfTasks);
+}
+
+
 
 
 async function addTaskHandler(event){
@@ -128,6 +137,7 @@ async function addTaskHandler(event){
 
 function initializeForms() {
   document.getElementById('addTaskBtn').addEventListener('click', addTaskHandler);
+  window.addEventListener('load', loadWindowHandler);
 }
 
 export {initializeForms};
