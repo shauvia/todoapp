@@ -1,6 +1,6 @@
 const url = ""; 
 const postTask = "/task"
-const tasks = "/tasks"
+const tasks = "/tasks/"
 
 function gatherUserInput(){
   const task = document.getElementById("task").value;
@@ -22,6 +22,11 @@ function displayTaskList(tasks){
     input.setAttribute("type", "checkbox");
     let label = document.createElement("label")
     label.innerHTML = tasks[i].taskName;
+    let taskId = tasks[i].taskId;
+    let eventHandler = async (event) => {
+      await changeStatus(taskId, input.checked);
+    };
+    input.addEventListener('click', eventHandler);
     li.appendChild(input)
     li.appendChild(label)
     // li.innerHTML = tasks[i].taskName;
@@ -34,6 +39,35 @@ function displayTaskList(tasks){
     ul.appendChild(li);
   }
 }
+
+async function postStatusChange(url, tasks, taskId, status){
+  const  inputStatus  = {
+    userInpStat: status
+  }
+
+  console.log("address", url+tasks+taskId, "inputStatusObject", inputStatus)
+  let response = await fetch(url+tasks+taskId, { 
+    method: 'POST' , 
+    body: JSON.stringify(inputStatus),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (!response.ok) {
+    let err = new Error('fetch failed, postStatusChange, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
+    throw err;
+  }
+  let content = await response.text(); // dobranie sie do tresci jest asynchroniczne, trzeba czekac; .json() oddżejsonowuje
+  console.log("postStatusChange", content)
+  return content;
+}
+
+async function changeStatus(id, inputStatus){
+  await postStatusChange(url, tasks, id, inputStatus)
+}
+
+
+
 
 function clearTaskList(){
   let ul = document.getElementById('taskList');
@@ -53,7 +87,7 @@ async function addTask(url, postTask, uInput){
     }
   });
   if (!response.ok) {
-    let err = new Error('fetch failed, addTrip and get forecast, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
+    let err = new Error('fetch failed, addTask, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
     throw err;
   }
   let content = await response.text(); // dobranie sie do tresci jest asynchroniczne, trzeba czekac; .json() oddżejsonowuje
@@ -61,8 +95,8 @@ async function addTask(url, postTask, uInput){
   return content;
 }
 
-async function getTask(url, taskList){
-  console.log('getTask', url, taskList);
+async function getTasks(url, taskList){
+  console.log('getTasks', url, taskList);
   let response = await fetch(url+taskList, {
     method: 'GET',
     headers: {
@@ -70,7 +104,7 @@ async function getTask(url, taskList){
     }
   });
   if (!response.ok) {
-    let err = new Error('fetch failed, getTask, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
+    let err = new Error('fetch failed, getTasks, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
     throw err;
   }
   let content = await response.json();
@@ -78,28 +112,13 @@ async function getTask(url, taskList){
   return content;
 }
 
-// async function getTrips(url, accountURL, accName, tripsApi){
-//   console.log("url, accountURL, accName, tripsApi", url, accountURL, accName, tripsApi)
-//   let response = await fetch(url + accountURL + accName + tripsApi, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   });
-//   if (!response.ok) {
-//     let err = new Error('fetch failed, getTrips, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
-//     throw err;
-//   }
-//   let content = await response.json();
-//   return content;
-// }
 
 async function addTaskHandler(event){
   const userData = gatherUserInput();
   clearUserInput()
   await addTask(url, postTask, userData);
   console.log("1");
-  let listOfTasks = await getTask(url, tasks);
+  let listOfTasks = await getTasks(url, tasks);
   console.log("listOfTasks", listOfTasks)
   clearTaskList();
   displayTaskList(listOfTasks);

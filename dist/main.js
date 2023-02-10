@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  margin-top: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-rows:repeat(2, auto); ;\r\n  grid-template-areas: \r\n   'formAddTask'\r\n   'list';\r\n  \r\n}\r\n\r\nform {\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign*/\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  margin-bottom: 2em;;\r\n  outline: 2px solid rgb(255, 0, 140);;\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff; /*not visible anyway when appearance: none is set*/\r\n  margin: 0; /*not visible anyway when appearance: none set*/\r\n  \r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);;\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  transform: translateY(-0.075em);\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.7em;\r\n  height: 0.7em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  box-shadow: inset 0.5em 0.5em var(--form-control-color);\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}", "",{"version":3,"sources":["webpack://./src/client/styles/style.css"],"names":[],"mappings":"AAAA;;;;gCAIgC;;;AAGhC;EACE,2BAA2B;EAC3B,oFAAoF;EACpF,aAAa;EACb,wCAAwC;EACxC,oBAAoB;AACtB;AACA;qCACqC;;AAErC;EACE,yBAAyB;EACzB,gBAAgB;EAChB,aAAa;EACb,0BAA0B;EAC1B,kCAAkC;EAClC;;SAEO;;AAET;;AAEA;EACE,mCAAmC;EACnC,sBAAsB;EACtB,aAAa;EACb,WAAW;EACX,oBAAoB;EACpB,+BAA+B;EAC/B,cAAc;EACd;sBACoB;AACtB;;AAEA;EACE,oBAAoB;EACpB,WAAW;EACX,WAAW;EACX,UAAU;EACV,SAAS;EACT,wCAAwC;AAC1C;;AAEA,cAAc,yBAAyB;EACrC,kBAAkB;EAClB,kCAAkC;EAClC,YAAY;EACZ,yBAAyB;EACzB,UAAU;EACV,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,oBAAoB;AACtB;;AAEA;EACE,kCAAkC;EAClC,YAAY;EACZ,eAAe;AACjB;AACA;EACE,WAAW;EACX,WAAW;EACX,2BAA2B;AAC7B;;AAEA;EACE,kBAAkB;EAClB,WAAW;EACX,wBAAwB;AAC1B;;AAEA;EACE,eAAe;EACf,oBAAoB;EACpB,WAAW;EACX,eAAe;EACf,kBAAkB;EAClB,mCAAmC;AACrC;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,aAAa;EACb,kBAAkB;EAClB,aAAa;EACb,+BAA+B;EAC/B,UAAU;EACV,2CAA2C;AAC7C;;AAEA,yBAAyB,gFAAgF;EACvG,gBAAgB;EAChB,sBAAsB,EAAE,kDAAkD;EAC1E,SAAS,EAAE,+CAA+C;;EAE1D,aAAa;EACb,8BAA8B;EAC9B,aAAa;EACb,cAAc;EACd,iCAAiC;EACjC,qBAAqB;EACrB,+BAA+B;EAC/B,aAAa;EACb,qBAAqB;AACvB;;AAEA,iCAAiC,gFAAgF;EAC/G,WAAW;EACX,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uCAAuC;EACvC,uDAAuD;EACvD,4BAA4B;EAC5B,uEAAuE;AACzE;;AAEA,yCAAyC,gFAAgF;EACvH,mBAAmB;AACrB","sourcesContent":["/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  margin-top: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-rows:repeat(2, auto); ;\r\n  grid-template-areas: \r\n   'formAddTask'\r\n   'list';\r\n  \r\n}\r\n\r\nform {\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign*/\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  margin-bottom: 2em;;\r\n  outline: 2px solid rgb(255, 0, 140);;\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff; /*not visible anyway when appearance: none is set*/\r\n  margin: 0; /*not visible anyway when appearance: none set*/\r\n  \r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);;\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  transform: translateY(-0.075em);\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.7em;\r\n  height: 0.7em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  box-shadow: inset 0.5em 0.5em var(--form-control-color);\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  margin-top: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-rows:repeat(2, auto); ;\r\n  grid-template-areas: \r\n   'formAddTask'\r\n   'list';\r\n  \r\n}\r\n\r\nform {\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign*/\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  margin-bottom: 2em;;\r\n  outline: 2px solid rgb(255, 0, 140);;\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff; \r\n  margin: 0; \r\n  /* to remove defoult styling of check boxes */\r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);;\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  /* transform: translateY(-0.075em);  moves checkbox a bit higher to make one line with a label */\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.6em;\r\n  height: 0.6em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}\r\n\r\n/* var(--form-control-color);*/", "",{"version":3,"sources":["webpack://./src/client/styles/style.css"],"names":[],"mappings":"AAAA;;;;gCAIgC;;;AAGhC;EACE,2BAA2B;EAC3B,oFAAoF;EACpF,aAAa;EACb,wCAAwC;EACxC,oBAAoB;AACtB;AACA;qCACqC;;AAErC;EACE,yBAAyB;EACzB,gBAAgB;EAChB,aAAa;EACb,0BAA0B;EAC1B,kCAAkC;EAClC;;SAEO;;AAET;;AAEA;EACE,mCAAmC;EACnC,sBAAsB;EACtB,aAAa;EACb,WAAW;EACX,oBAAoB;EACpB,+BAA+B;EAC/B,cAAc;EACd;sBACoB;AACtB;;AAEA;EACE,oBAAoB;EACpB,WAAW;EACX,WAAW;EACX,UAAU;EACV,SAAS;EACT,wCAAwC;AAC1C;;AAEA,cAAc,yBAAyB;EACrC,kBAAkB;EAClB,kCAAkC;EAClC,YAAY;EACZ,yBAAyB;EACzB,UAAU;EACV,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,oBAAoB;AACtB;;AAEA;EACE,kCAAkC;EAClC,YAAY;EACZ,eAAe;AACjB;AACA;EACE,WAAW;EACX,WAAW;EACX,2BAA2B;AAC7B;;AAEA;EACE,kBAAkB;EAClB,WAAW;EACX,wBAAwB;AAC1B;;AAEA;EACE,eAAe;EACf,oBAAoB;EACpB,WAAW;EACX,eAAe;EACf,kBAAkB;EAClB,mCAAmC;AACrC;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,aAAa;EACb,kBAAkB;EAClB,aAAa;EACb,+BAA+B;EAC/B,UAAU;EACV,2CAA2C;AAC7C;;AAEA,yBAAyB,gFAAgF;EACvG,gBAAgB;EAChB,sBAAsB;EACtB,SAAS;EACT,6CAA6C;EAC7C,aAAa;EACb,8BAA8B;EAC9B,aAAa;EACb,cAAc;EACd,iCAAiC;EACjC,qBAAqB;EACrB,gGAAgG;EAChG,aAAa;EACb,qBAAqB;AACvB;;AAEA,iCAAiC,gFAAgF;EAC/G,WAAW;EACX,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uCAAuC;EACvC,4BAA4B;EAC5B,uEAAuE;AACzE;;AAEA,yCAAyC,gFAAgF;EACvH,mBAAmB;AACrB;;AAEA,8BAA8B","sourcesContent":["/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  margin-top: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-rows:repeat(2, auto); ;\r\n  grid-template-areas: \r\n   'formAddTask'\r\n   'list';\r\n  \r\n}\r\n\r\nform {\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign*/\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  margin-bottom: 2em;;\r\n  outline: 2px solid rgb(255, 0, 140);;\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff; \r\n  margin: 0; \r\n  /* to remove defoult styling of check boxes */\r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);;\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  /* transform: translateY(-0.075em);  moves checkbox a bit higher to make one line with a label */\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.6em;\r\n  height: 0.6em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}\r\n\r\n/* var(--form-control-color);*/"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -491,7 +491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const url = ""; 
 const postTask = "/task"
-const tasks = "/tasks"
+const tasks = "/tasks/"
 
 function gatherUserInput(){
   const task = document.getElementById("task").value;
@@ -513,6 +513,11 @@ function displayTaskList(tasks){
     input.setAttribute("type", "checkbox");
     let label = document.createElement("label")
     label.innerHTML = tasks[i].taskName;
+    let taskId = tasks[i].taskId;
+    let eventHandler = async (event) => {
+      await changeStatus(taskId, input.checked);
+    };
+    input.addEventListener('click', eventHandler);
     li.appendChild(input)
     li.appendChild(label)
     // li.innerHTML = tasks[i].taskName;
@@ -525,6 +530,35 @@ function displayTaskList(tasks){
     ul.appendChild(li);
   }
 }
+
+async function postStatusChange(url, tasks, taskId, status){
+  const  inputStatus  = {
+    userInpStat: status
+  }
+
+  console.log("address", url+tasks+taskId, "inputStatusObject", inputStatus)
+  let response = await fetch(url+tasks+taskId, { 
+    method: 'POST' , 
+    body: JSON.stringify(inputStatus),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (!response.ok) {
+    let err = new Error('fetch failed, postStatusChange, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
+    throw err;
+  }
+  let content = await response.text(); // dobranie sie do tresci jest asynchroniczne, trzeba czekac; .json() oddżejsonowuje
+  console.log("postStatusChange", content)
+  return content;
+}
+
+async function changeStatus(id, inputStatus){
+  await postStatusChange(url, tasks, id, inputStatus)
+}
+
+
+
 
 function clearTaskList(){
   let ul = document.getElementById('taskList');
@@ -544,7 +578,7 @@ async function addTask(url, postTask, uInput){
     }
   });
   if (!response.ok) {
-    let err = new Error('fetch failed, addTrip and get forecast, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
+    let err = new Error('fetch failed, addTask, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
     throw err;
   }
   let content = await response.text(); // dobranie sie do tresci jest asynchroniczne, trzeba czekac; .json() oddżejsonowuje
@@ -552,8 +586,8 @@ async function addTask(url, postTask, uInput){
   return content;
 }
 
-async function getTask(url, taskList){
-  console.log('getTask', url, taskList);
+async function getTasks(url, taskList){
+  console.log('getTasks', url, taskList);
   let response = await fetch(url+taskList, {
     method: 'GET',
     headers: {
@@ -561,7 +595,7 @@ async function getTask(url, taskList){
     }
   });
   if (!response.ok) {
-    let err = new Error('fetch failed, getTask, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
+    let err = new Error('fetch failed, getTasks, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
     throw err;
   }
   let content = await response.json();
@@ -569,28 +603,13 @@ async function getTask(url, taskList){
   return content;
 }
 
-// async function getTrips(url, accountURL, accName, tripsApi){
-//   console.log("url, accountURL, accName, tripsApi", url, accountURL, accName, tripsApi)
-//   let response = await fetch(url + accountURL + accName + tripsApi, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   });
-//   if (!response.ok) {
-//     let err = new Error('fetch failed, getTrips, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText);
-//     throw err;
-//   }
-//   let content = await response.json();
-//   return content;
-// }
 
 async function addTaskHandler(event){
   const userData = gatherUserInput();
   clearUserInput()
   await addTask(url, postTask, userData);
   console.log("1");
-  let listOfTasks = await getTask(url, tasks);
+  let listOfTasks = await getTasks(url, tasks);
   console.log("listOfTasks", listOfTasks)
   clearTaskList();
   displayTaskList(listOfTasks);

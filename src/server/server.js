@@ -19,14 +19,19 @@ function listening(){
 }
 
 let taskArr = [];
+let taskNum = 0;
 
 
 app.post('/task', async function(req, res){
   try{
     const singleTask = {
-      taskName: ""
+      taskName: "",
+      checked: false,
+      taskId: -1
     }
     singleTask.taskName = req.body.userTask;
+    singleTask.taskId = taskNum;
+    taskNum = taskNum + 1;
     taskArr.push(singleTask);
     console.log("taskArr", taskArr);
     res.send("OK");
@@ -45,5 +50,32 @@ app.get('/tasks', async function (req, res){
     res.status(500).send();
   }  
 })
+
+app.post('/tasks/:id', async function (req, res){
+  try{
+    let id = req.params.id; 
+    console.log("taskID", id)
+    let inputStatus = req.body.userInpStat;
+    console.log("inputStatus", inputStatus);
+    // let oneTrip = await loadOneTrip(userId, tripID);
+    // console.log("Loading one trip: ", oneTrip)
+    let arrOfTasks = taskArr;
+    for (let i = 0; i < arrOfTasks.length; i++){
+      if (arrOfTasks[i].taskId == id) {
+        arrOfTasks[i].checked = inputStatus;
+        console.log("for, status", arrOfTasks[i].checked)
+        res.send("OK");
+        return;
+      }
+    }
+    res.status(404).send("Task not found");  
+  } catch(error){
+    console.log('Error on the server, changing checked failed: ', error);
+    res.status(500).send();
+    
+  }
+})
+
+
 
 const server = app.listen(port, listening);
