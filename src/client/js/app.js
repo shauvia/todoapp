@@ -2,8 +2,7 @@ const url = "";
 const postTask = "/task"
 const tasks = "/tasks/"
 
-function gatherUserInput(){
-  const task = document.getElementById("task").value;
+function gatherUserInput(task){
   const userInput = {
     userTask: task
   }
@@ -12,6 +11,10 @@ function gatherUserInput(){
 
 function clearUserInput(){
   document.getElementById("task").value = "";
+}
+
+function displayErrorMessage(){
+  document.getElementById('errorMsg').innerHTML = "Task is empty";
 }
 
 function displayTaskList(tasks){
@@ -28,15 +31,8 @@ function displayTaskList(tasks){
       await changeStatus(taskId, input.checked);
     };
     input.addEventListener('click', eventHandler);
-    li.appendChild(input)
-    li.appendChild(label)
-    // li.innerHTML = tasks[i].taskName;
-    // let tripNum = trips[i].tripID;
-    // let eventHandler = async (event) => {
-    //   await fetchAndDisplayTrip(tripNum);
-    // };
-    // li.addEventListener('click', eventHandler);
-    // li.setAttribute("id", trips[i].tripID);
+    li.appendChild(input);
+    li.appendChild(label);
     ul.appendChild(li);
   }
 }
@@ -120,10 +116,14 @@ async function loadWindowHandler(event){
 }
 
 
-
-
 async function addTaskHandler(event){
-  const userData = gatherUserInput();
+  const userInput = document.getElementById("task").value;
+  console.log("task", userInput);
+  if (!userInput || userInput ==""){
+    displayErrorMessage()
+    return;
+  }
+  const userData = gatherUserInput(userInput);
   clearUserInput()
   await addTask(url, postTask, userData);
   console.log("1");
@@ -131,8 +131,6 @@ async function addTaskHandler(event){
   console.log("listOfTasks", listOfTasks)
   clearTaskList();
   displayTaskList(listOfTasks);
-
-  
 }
 
 function initializeForms() {
