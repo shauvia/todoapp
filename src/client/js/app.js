@@ -31,8 +31,17 @@ function displayTaskList(tasks){
       await changeStatus(taskId, input.checked);
     };
     input.addEventListener('click', eventHandler);
+    let button = document.createElement("button");
+    button.classList.add("btn-delete");
+    let spanDeleteBtn = document.createElement("span");
+    spanDeleteBtn.classList.add("mdi", "mdi-delete", "mdi-24px", "delete_button");
+    let spanDeleteBtnHovered = document.createElement("span");
+    spanDeleteBtnHovered.classList.add("mdi", "mdi-delete-empty", "mdi-24px", "delete_button_hovered")
     li.appendChild(input);
     li.appendChild(label);
+    button.appendChild(spanDeleteBtn);
+    button.appendChild(spanDeleteBtnHovered);
+    li.appendChild(button);
     ul.appendChild(li);
   }
 }
