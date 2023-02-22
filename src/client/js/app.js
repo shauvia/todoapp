@@ -1,6 +1,6 @@
 const url = ""; 
 const postTask = "/task"
-const tasks = "/tasks/"
+const tasksApi = "/tasks/"
 
 function gatherUserInput(task){
   const userInput = {
@@ -27,6 +27,7 @@ function displayTaskList(tasks){
     label.innerHTML = tasks[i].taskName;
     input.checked = tasks[i].checked; // is suposed to be setting checked status according to the list from server 
     let taskId = tasks[i].taskId;
+    console.log("displayTaskLis: taskId",taskId)
     let eventHandler = async (event) => {
       await changeStatus(taskId, input.checked);
     };
@@ -37,6 +38,13 @@ function displayTaskList(tasks){
     spanDeleteBtn.classList.add("mdi", "mdi-delete", "mdi-24px", "delete_button");
     let spanDeleteBtnHovered = document.createElement("span");
     spanDeleteBtnHovered.classList.add("mdi", "mdi-delete-empty", "mdi-24px", "delete_button_hovered")
+    let deleteHandler = async (e) => {
+      await removeTask(url, tasksApi, taskId);
+      clearTaskList();
+      let taskList = await getTasks(url, tasksApi)
+      displayTaskList(taskList);
+    }
+    button.addEventListener('click',  deleteHandler);
     li.appendChild(input);
     li.appendChild(label);
     button.appendChild(spanDeleteBtn);
@@ -46,13 +54,27 @@ function displayTaskList(tasks){
   }
 }
 
-async function postStatusChange(url, tasks, taskId, status){
+async function removeTask(url, tasksApi, taskNum){
+  console.log("removeTask: url, tasks, taskId", url, tasksApi, taskNum);
+  let response = await fetch(url + tasksApi + taskNum, { 
+    method: 'DELETE', 
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (!response.ok) {
+    const err = new Error('fetch failed, removeTask, response.status: ' +  response.status, ' response.statusText: ' +  response.statusText); 
+    throw err;
+  }
+}
+
+async function postStatusChange(url, tasksApi, taskId, status){
   const  inputStatus  = {
     userInpStat: status
   }
 
-  console.log("address", url+tasks+taskId, "inputStatusObject", inputStatus)
-  let response = await fetch(url+tasks+taskId, { 
+  console.log("address", url+tasksApi+taskId, "inputStatusObject", inputStatus)
+  let response = await fetch(url+tasksApi+taskId, { 
     method: 'POST' , 
     body: JSON.stringify(inputStatus),
     headers: {
@@ -69,7 +91,7 @@ async function postStatusChange(url, tasks, taskId, status){
 }
 
 async function changeStatus(id, inputStatus){
-  await postStatusChange(url, tasks, id, inputStatus)
+  await postStatusChange(url, tasksApi, id, inputStatus)
 }
 
 
@@ -120,8 +142,8 @@ async function getTasks(url, taskList){
  
 async function loadWindowHandler(event){
   clearUserInput()
-  let listOfTasks = await getTasks(url, tasks);
-  await displayTaskList(listOfTasks);
+  let listOfTasks = await getTasks(url, tasksApi);
+  displayTaskList(listOfTasks);
 }
 
 
@@ -136,7 +158,7 @@ async function addTaskHandler(event){
   clearUserInput()
   await addTask(url, postTask, userData);
   console.log("1");
-  let listOfTasks = await getTasks(url, tasks);
+  let listOfTasks = await getTasks(url, tasksApi);
   console.log("listOfTasks", listOfTasks)
   clearTaskList();
   displayTaskList(listOfTasks);

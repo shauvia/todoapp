@@ -76,6 +76,21 @@ app.post('/tasks/:id', async function (req, res){
   }
 })
 
+app.delete('/tasks/:id', async function (req, res){
+  try{
+    let taskNum = req.params.id;
+    for (let i = 0; i < taskArr.length; i++){
+      if (taskNum == taskArr[i].taskId){
+        taskArr.splice(i, 1);
+        res.send();
+      }
+    }
+  }catch(error){
+    res.status(500).send();
+    console.log('Error on the server, deleting task failed: ', error);
+  }  
+})
+
 
 
 const server = app.listen(port, listening);
