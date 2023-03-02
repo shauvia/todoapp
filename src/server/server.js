@@ -2,6 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const storage = require('./index.js');
+const saveDataMongo = storage.saveDataMongo;
+const loadDatafromMongo = storage.loadDatafromMongo;
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded( {extended: false} ));
@@ -18,35 +22,51 @@ function listening(){
   console.log(`runnning on localhost ${port}`);
 }
 
-let taskArr = [];
-let taskNum = 0;
+// let taskArr = [];
+// let taskNum = 0;
 
 
 app.post('/task', async function(req, res){
-  try{
-    const singleTask = {
-      taskName: "",
-      checked: false,
-      taskId: -1
+  try {
+  // let userId = req.params.accId;
+  let allTasks = await loadDatafromMongo('allTasks');
+  if (!allTasks) {
+    allTasks = {
+      _id: 'allTasks',
+      tasks: [],
+      nextTaskId: 0
     }
-    singleTask.taskName = req.body.userTask;
-    singleTask.taskId = taskNum;
-    taskNum = taskNum + 1;
-    taskArr.push(singleTask);
-    console.log("taskArr", taskArr);
-    res.send("OK");
-  }catch(error){
-    res.status(500).send();
-    console.log('Error on the server, posting task failed: ', error);
+  }
+  let nextTaskId = allTasks.nextTaskId;
+  const singleTask = {
+    taskName: "",
+    checked: false,
+    taskId: -1
+  }
+  singleTask.taskId = nextTaskId;
+  nextTaskId = nextTaskId + 1;
+  allTasks.nextTaskId = nextTaskId;
+  console.log("nextTaskId", nextTaskId)
+  singleTask.taskName = req.body.userTask;
+  allTasks.tasks.push(singleTask);
+  console.log("allTasks", allTasks);
+  await saveDataMongo(allTasks);
+  console.log("allTasks", allTasks);
+  res.send("OK");
+}catch(error){
+  res.status(500).send();
+  console.log('Error on the server, posting task failed: ', error);
   }  
 })
 
 app.get('/tasks', async function (req, res){
   try{
+    let allTasks = await loadDatafromMongo('allTasks');
+    let taskArr = allTasks.tasks
     console.log("Sending tasks", taskArr.length);
     res.send(taskArr);
   } catch(error){
-    console.log('Error on the server, getting trip list failed: ', error)
+    console.log('Error on the server, getting task list failed: ', error)
     res.status(500).send();
   }  
 })
@@ -57,13 +77,13 @@ app.post('/tasks/:id', async function (req, res){
     console.log("taskID", id)
     let inputStatus = req.body.userInpStat;
     console.log("inputStatus", inputStatus);
-    // let oneTrip = await loadOneTrip(userId, tripID);
-    // console.log("Loading one trip: ", oneTrip)
-    let arrOfTasks = taskArr;
+    let allTasks = await loadDatafromMongo('allTasks'); 
+    let arrOfTasks = allTasks.tasks;
     for (let i = 0; i < arrOfTasks.length; i++){
       if (arrOfTasks[i].taskId == id) {
         arrOfTasks[i].checked = inputStatus;
         console.log("for, status", arrOfTasks[i].checked)
+        await saveDataMongo(allTasks);
         res.send("OK");
         return;
       }
@@ -79,9 +99,12 @@ app.post('/tasks/:id', async function (req, res){
 app.delete('/tasks/:id', async function (req, res){
   try{
     let taskNum = req.params.id;
+    let allTasks = await loadDatafromMongo('allTasks');
+    let taskArr = allTasks.tasks
     for (let i = 0; i < taskArr.length; i++){
       if (taskNum == taskArr[i].taskId){
         taskArr.splice(i, 1);
+        await saveDataMongo(allTasks);
         res.send();
       }
     }
