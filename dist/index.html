@@ -9,7 +9,7 @@
     <title>To Do App</title>
   <script defer src="main.js"></script></head>
     <section id="addTask">
-      <form>
+      <form id="taskForm">
         <input type="text" id="task" name="taskInput" placeholder="Add a Task">
         <p id="errorMsg"></p>
         <button type="button" id="addTaskBtn">
@@ -35,11 +35,24 @@
         <li>
           <input type="checkbox"> 
           <label>Hierbata</label>
+    
           
         </li> -->
       </ul>
     </section>
-    <section id="removeTask"></section>
+    <section id="homePage">
+        <form id="createAccForm">
+          <label for="createAccount" id="createAccLabel" class="labels">Create your account</label>
+          <input type="text" id="createAccount" class="tripInputs" name="createAccount" placeholder="Enter username">
+          <button id="createAccBtn" class="buttons" type="button">Create</button>
+        </form>
+
+        <form id="loginForm">
+          <label for="logininput" id="loginLabel" class="labels">Sign in</label>
+          <input type="text" id="login" class="tripInputs" name="logininput" placeholder="Enter your login">
+          <button id="loginButton" class="buttons" type="button">Login</button>
+        </form>
+    </section>
     <body>
   </body>
 </html>

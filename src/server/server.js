@@ -104,7 +104,8 @@ app.delete('/tasks/:id', async function (req, res){
     for (let i = 0; i < taskArr.length; i++){
       if (taskNum == taskArr[i].taskId){
         taskArr.splice(i, 1);
-        await saveDataMongo(allTasks);
+        await 
+        saveDataMongo(allTasks);
         res.send();
       }
     }

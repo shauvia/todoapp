@@ -20,14 +20,13 @@ font-family: 'Tajawal', sans-serif; */
   margin-top: 10em;
   display: grid; 
   grid-template-columns: 1fr;
-  grid-template-rows:repeat(2, auto); ;
-  grid-template-areas: 
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
    'formAddTask'
    'list';
-  
 }
 
-form {
+#taskForm{
   outline: 2px solid rgb(0, 204, 255);
   grid-area: formAddTask;
   display: grid;
@@ -78,7 +77,7 @@ form {
 }
 
 #taskList {
-  /* grid-area: list; */
+  grid-area: list;
   justify-self: center;
   width: 25em;
   margin-top: 2em;
@@ -93,7 +92,7 @@ form {
   font-size: 1.2em;
   height: 2.5em;
   border-radius: 5px;
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 1em auto 30px;
   gap: 0.5em;
   background-color: rgba(98, 131, 149, 0.781);
@@ -101,11 +100,10 @@ form {
 
 input[type="checkbox"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */
   appearance: none;
-  background-color: #fff; 
-  margin: 0; 
-  /* to remove default styling of check boxes */
+  background-color: #fff;
+  margin: 0;
   font: inherit;
-  color: rgba(15, 64, 90, 0.781);;
+  color: rgba(15, 64, 90, 0.781);
   width: 1.15em;
   height: 1.15em;
   border: 0.13em solid currentColor;
@@ -138,7 +136,6 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   padding: 0;
   cursor: pointer;
   color: rgb(255, 166, 0);
-  border: none;
 }
 .btn-delete > .delete_button_hovered {
   display: none;
@@ -151,3 +148,93 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   display: none;
 }
 
+#homePage{
+  /* outline: 1px solid green; */
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  column-gap: 5%;
+  grid-template-areas:
+    'logForm'
+    'creAccForm';
+  width: 30vw;
+  margin: 5em auto 0 auto;
+}
+
+#createAccForm {
+  grid-area: creAccForm;
+  justify-self: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, auto);
+  column-gap: 5%;
+  grid-template-areas:
+    'crAccLab crAccLab'
+    'crAccBtn crAcc';
+  width: 30em;
+}
+
+#createAccLabel {
+  grid-area: crAccLab;
+  font-size: 2em;
+  margin-bottom: 1em;
+  margin-top: 8em;
+  justify-self: end;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#createAccount {
+  grid-area: crAcc;
+  /* margin-top: 2em; */
+  height: 4em;
+  padding: 0;
+  border: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#createAccBtn {
+  grid-area: crAccBtn;
+  justify-self: end;
+  /* margin-top: 1.5em; */
+  height: 4em;
+  width: 6em;
+  padding: 0;
+  border: 0;
+  background-color: rgba(12, 48, 68, 0.781);
+  color: aliceblue;
+}
+
+#loginForm {
+  grid-area: logForm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    'logLab logLab'
+    'login logBtn';
+  width: 30em;
+  column-gap: 5%;
+}
+
+#loginLabel {
+  grid-area: logLab;
+  margin-bottom: 1em;
+  font-size: 2em;
+}
+
+#login {
+  grid-area: login;
+  height: 4em;
+  padding: 0;
+  border: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#loginButton {
+  grid-area: logBtn;
+  height: 4em;
+  width: 6em;
+  padding: 0;
+  border: 0;
+  background-color: rgba(26, 99, 138, 0.781);;
+  color: aliceblue;
+}
