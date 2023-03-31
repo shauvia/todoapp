@@ -8,6 +8,7 @@
 
     <title>To Do App</title>
   </head>
+  <body>
     <section id="addTask">
       <form id="taskForm">
         <input type="text" id="task" name="taskInput" placeholder="Add a Task">
@@ -20,39 +21,26 @@
         </button>  
       </form>
       <ul id="taskList">
-        <!-- <li>
-          <input type="checkbox"> 
-          <label>Mleko</label>
-          <button class="btn btn-delete">
-            <span class="mdi mdi-delete mdi-24px delete_button"></span>
-            <span class="mdi mdi-delete-empty mdi-24px delete_button_hovered"></span> 
-          </button>
-        </li> -->
-        <!-- <li>
-          <input type="checkbox"> 
-          <label>Kawa</label>
-        </li>
-        <li>
-          <input type="checkbox"> 
-          <label>Hierbata</label>
-    
-          
-        </li> -->
       </ul>
     </section>
     <section id="homePage">
-        <form id="createAccForm">
-          <label for="createAccount" id="createAccLabel" class="labels">Create your account</label>
-          <input type="text" id="createAccount" class="tripInputs" name="createAccount" placeholder="Enter username">
-          <button id="createAccBtn" class="buttons" type="button">Create</button>
-        </form>
+      <form id="createAccForm">
+        <label for="createAccount" id="createAccLabel" class="labels">Create your account</label>
+        <input type="text" id="createAccount" class="tripInputs" name="createAccount" placeholder="Enter username">
+        <button id="createAccBtn" class="buttons" type="button">Create</button>
+      </form>
 
-        <form id="loginForm">
-          <label for="logininput" id="loginLabel" class="labels">Sign in</label>
-          <input type="text" id="login" class="tripInputs" name="logininput" placeholder="Enter your login">
-          <button id="loginButton" class="buttons" type="button">Login</button>
-        </form>
+      <div id="displayMessage"></div>
+
+      <form id="loginForm">
+        <label for="logininput" id="loginLabel" class="labels">Sign in</label>
+        <input type="text" id="login" class="tripInputs" name="logininput" placeholder="Enter your login">
+        <button id="loginButton" class="buttons" type="button">Login</button>
+      </form>
     </section>
-    <body>
+    <div id="logoutForm">
+      <button id="logoutButton" class="buttons" type="button">Log out</button>
+    </div>
+    
   </body>
 </html>

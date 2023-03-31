@@ -78,7 +78,7 @@ async function loadDatafromMongo(userId) {
     const database = client.db('users');
     const taskList = database.collection('taskList');
    
-    const query = {_id : 'allTasks'};
+    const query = {_id : userId};
     const allRecords = await taskList.findOne(query);
     // console.log(`Records has been read with _id: ${allRecords._id}`);
     return allRecords;

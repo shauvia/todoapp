@@ -81,7 +81,7 @@ font-family: 'Tajawal', sans-serif; */
   justify-self: center;
   width: 25em;
   margin-top: 2em;
-  outline: 2px solid rgb(255, 0, 140);;
+  /* outline: 2px solid rgb(255, 0, 140);; */
 }
 
 #taskList li {
@@ -92,7 +92,7 @@ font-family: 'Tajawal', sans-serif; */
   font-size: 1.2em;
   height: 2.5em;
   border-radius: 5px;
-  /* display: grid; */
+  display: grid;
   grid-template-columns: 1em auto 30px;
   gap: 0.5em;
   background-color: rgba(98, 131, 149, 0.781);
@@ -203,6 +203,12 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   color: aliceblue;
 }
 
+#createAccBtn:hover {
+  background-color: rgba(41, 134, 184, 0.781);
+  color: white;
+  cursor: pointer;
+}
+
 #loginForm {
   grid-area: logForm;
   display: grid;
@@ -235,6 +241,12 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   width: 6em;
   padding: 0;
   border: 0;
-  background-color: rgba(26, 99, 138, 0.781);;
+  background-color: rgba(26, 99, 138, 0.781);
   color: aliceblue;
+}
+
+#loginButton:hover {
+  background-color: rgba(11, 36, 49, 0.781);
+  color: white;
+  cursor: pointer;
 }

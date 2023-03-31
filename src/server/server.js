@@ -25,19 +25,18 @@ function listening(){
 // let taskArr = [];
 // let taskNum = 0;
 
-
-app.post('/task', async function(req, res){
+// poprawić wszystko w oparciu o konto użytkownika
+app.post('/users/:accId/tasks', async function(req, res){
   try {
-  // let userId = req.params.accId;
-  let allTasks = await loadDatafromMongo('allTasks');
-  if (!allTasks) {
-    allTasks = {
-      _id: 'allTasks',
-      tasks: [],
-      nextTaskId: 0
-    }
+  let userId = req.params.accId;
+  console.log("account", userId);
+  let user = await loadDatafromMongo(userId);
+  let tasks = user.tasks;
+  if (!user) {
+    res.status(404).send("No such user");
+    return;
   }
-  let nextTaskId = allTasks.nextTaskId;
+  let nextTaskId = user.nextTaskId;
   const singleTask = {
     taskName: "",
     checked: false,
@@ -45,13 +44,13 @@ app.post('/task', async function(req, res){
   }
   singleTask.taskId = nextTaskId;
   nextTaskId = nextTaskId + 1;
-  allTasks.nextTaskId = nextTaskId;
+  user.nextTaskId = nextTaskId;
   console.log("nextTaskId", nextTaskId)
   singleTask.taskName = req.body.userTask;
-  allTasks.tasks.push(singleTask);
-  console.log("allTasks", allTasks);
-  await saveDataMongo(allTasks);
-  console.log("allTasks", allTasks);
+  user.tasks.push(singleTask);
+  console.log("user", user);
+  await saveDataMongo(user);
+  // console.log("allTasks", allTasks);
   res.send("OK");
 }catch(error){
   res.status(500).send();
@@ -59,10 +58,17 @@ app.post('/task', async function(req, res){
   }  
 })
 
-app.get('/tasks', async function (req, res){
+
+
+app.get('/users/:accId/tasks', async function (req, res){
   try{
-    let allTasks = await loadDatafromMongo('allTasks');
-    let taskArr = allTasks.tasks
+    let userId = req.params.accId;
+    let user = await loadDatafromMongo(userId);
+    if (!user) {
+      res.status(404).send("No such user");
+      return;
+    }
+    let taskArr = user.tasks
     console.log("Sending tasks", taskArr.length);
     res.send(taskArr);
   } catch(error){
@@ -71,19 +77,24 @@ app.get('/tasks', async function (req, res){
   }  
 })
 
-app.post('/tasks/:id', async function (req, res){
+app.post('/users/:accId/tasks/:id', async function (req, res){
   try{
     let id = req.params.id; 
     console.log("taskID", id)
     let inputStatus = req.body.userInpStat;
-    console.log("inputStatus", inputStatus);
-    let allTasks = await loadDatafromMongo('allTasks'); 
-    let arrOfTasks = allTasks.tasks;
+    console.log("inputStatus", req.body.userInpStat);
+    let userId = req.params.accId;
+    let user = await loadDatafromMongo(userId);
+    if (!user) {
+      res.status(404).send("No such user");
+      return;
+    }
+    let arrOfTasks = user.tasks;
     for (let i = 0; i < arrOfTasks.length; i++){
       if (arrOfTasks[i].taskId == id) {
         arrOfTasks[i].checked = inputStatus;
         console.log("for, status", arrOfTasks[i].checked)
-        await saveDataMongo(allTasks);
+        await saveDataMongo(user);
         res.send("OK");
         return;
       }
@@ -96,16 +107,21 @@ app.post('/tasks/:id', async function (req, res){
   }
 })
 
-app.delete('/tasks/:id', async function (req, res){
+app.delete('/users/:accId/tasks/:id', async function (req, res){
   try{
+    let userId = req.params.accId;
     let taskNum = req.params.id;
-    let allTasks = await loadDatafromMongo('allTasks');
-    let taskArr = allTasks.tasks
+    let user = await loadDatafromMongo(userId);
+    if (!user) {
+      res.status(404).send("No such user");
+      return;
+    }
+    let taskArr = user.tasks
     for (let i = 0; i < taskArr.length; i++){
       if (taskNum == taskArr[i].taskId){
         taskArr.splice(i, 1);
         await 
-        saveDataMongo(allTasks);
+        saveDataMongo(user);
         res.send();
       }
     }
@@ -114,6 +130,59 @@ app.delete('/tasks/:id', async function (req, res){
     console.log('Error on the server, deleting task failed: ', error);
   }  
 })
+
+app.put('/users', async function (req, res){
+  try{
+    let userAccName = req.body;
+    let userExists = await loadDatafromMongo(userAccName);
+    console.log("Sprawdzam czy konto istnieje", userExists);
+    let accCheck = {
+      alreadyCreated : false
+    };
+    if (!userExists){
+      let user = {
+        _id : userAccName,
+        tasks: [],
+        nextTaskId: 0,
+
+      }
+      await saveDataMongo(user);
+      res.send(accCheck);
+    } else {
+      accCheck.alreadyCreated = true;
+      console.log('Konto już jest ', userAccName);
+      res.send(accCheck);
+    }
+  }catch(error){
+    res.status(500).send();
+    console.log('Error on the server, account creating failed: ', error);
+  }  
+});
+
+app.get('/users/:accId', async function(req, res){
+  try{
+    let userAcc = req.params.accId;
+    console.log('Zczytalo', userAcc)
+    let userExists = await loadDatafromMongo(userAcc); 
+    console.log("Konto: ", userExists )
+    let accCheck = {
+      isCreated : true
+    };
+    if (!userExists){
+      accCheck.isCreated = false;
+      console.log('konto nie istnieje, accCheck: ', accCheck)
+      res.send(accCheck);
+    } else {
+      accCheck.alreadyCreated = true;
+      console.log('Juz jest ', userAcc);
+      res.send(accCheck);
+    }
+  }catch(error){
+    res.status(500).send();
+    console.log('Error on the server, loggin to account failed: ', error);
+  }    
+});
+
 
 
 
