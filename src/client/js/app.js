@@ -1,6 +1,6 @@
 const url = ""; 
-const users = "/users/"
-const tasksApi = "/tasks/"
+const users = "/users"
+const tasksApi = "/tasks"
 let user = "";
 // const postTask = "/task"
 
@@ -35,7 +35,7 @@ function displayTaskList(tasks){
     console.log("displayTaskLis: taskId",taskId);
     let eventHandler = async (event) => {
       console.log("changeStatus, address: ", url+users+user+tasksApi+taskId+input.checked)
-      await postStatusChange(url, users, user, tasksApi,taskId,input.checked);
+      await postStatusChange(url, users, tasksApi, taskId, input.checked, user);
     };
     input.addEventListener('click', eventHandler);
     let button = document.createElement("button");
@@ -45,9 +45,9 @@ function displayTaskList(tasks){
     let spanDeleteBtnHovered = document.createElement("span");
     spanDeleteBtnHovered.classList.add("mdi", "mdi-delete-empty", "mdi-24px", "delete_button_hovered")
     let deleteHandler = async (e) => {
-      await removeTask(url, users, user, tasksApi, taskId);
+      await removeTask(url, users, tasksApi, taskId, user);
       clearTaskList();
-      let taskList = await getTasks(url, users, user, tasksApi)
+      let taskList = await getTasks(url, users, tasksApi, user);
       displayTaskList(taskList);
     }
     button.addEventListener('click',  deleteHandler);
@@ -60,12 +60,13 @@ function displayTaskList(tasks){
   }
 }
 
-async function removeTask(url, users, accName, tasksApi, taskNum){
-  console.log("removeTask: url, tasks, taskId",url+users+accName+tasksApi+taskNum);
-  let response = await fetch(url+users+accName+tasksApi+taskNum, { 
+async function removeTask(url, users, tasksApi, taskNum, token){
+  console.log("removeTask: url, tasks, taskId",url+users+tasksApi+taskNum);
+  let response = await fetch(url+users+tasksApi+'/'+taskNum, { 
     method: 'DELETE', 
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -74,20 +75,21 @@ async function removeTask(url, users, accName, tasksApi, taskNum){
   }
 }
 
-async function postStatusChange(url, users, accName, tasksApi, taskId, status){
+async function postStatusChange(url, users, tasksApi, taskId, status, token){
   console.log ("postStatusChange, status: ", status)
   
   const  inputStatus  = {
     userInpStat: status
   }
 
-  console.log("postStatusChange, address: ", url+users+accName+tasksApi+taskId) 
+  console.log("postStatusChange, address: ", url+users+tasksApi+taskId) 
   
-  let response = await fetch(url+users+accName+tasksApi+taskId, { 
+  let response = await fetch(url+users+tasksApi+'/'+taskId, { 
     method: 'POST' , 
     body: JSON.stringify(inputStatus),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -112,14 +114,15 @@ function clearTaskList(){
   }
 }
 
-async function addTask(url, users, accName, tasksApi, uInput){
-  console.log("addTask", users, accName, tasksApi, uInput)
+async function addTask(url, users, tasksApi, uInput, token){
+  console.log("addTask", users, uInput, token)
   // console.log("app.js,addTask URL: ", url+postTask,)
-  let response = await fetch(url+users+accName+tasksApi, { 
+  let response = await fetch(url+users+tasksApi, { 
     method: 'POST' , 
     body: JSON.stringify(uInput),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -131,12 +134,13 @@ async function addTask(url, users, accName, tasksApi, uInput){
   return content;
 }
 
-async function getTasks(url, users, accName, tasksApi){
-  console.log('getTasks', users, accName, tasksApi);
-  let response = await fetch(url+users+accName+tasksApi, {
+async function getTasks(url, users, tasksApi, token){
+  console.log('getTasks', users, token, tasksApi);
+  let response = await fetch(url+users+tasksApi, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -165,22 +169,14 @@ async function addTaskHandler(event){
   }
   const userData = gatherUserInput(userInput);
   clearUserInput()
-  await addTask(url, users, user, tasksApi, userData);
+  await addTask(url, users, tasksApi, userData, user);
   console.log("1");
-  let listOfTasks = await getTasks(url, users, user, tasksApi);
+  let listOfTasks = await getTasks(url, users, tasksApi, user);
   console.log("listOfTasks", listOfTasks)
   clearTaskList();
   displayTaskList(listOfTasks);
 }
 
-// function initializeForms() {
-//   document.getElementById('addTaskBtn').addEventListener('click', addTaskHandler);
-//   window.addEventListener('load', loadWindowHandler);
-// }
-
-//pamiętac aby skonczeniu wszystkiego zmienic wartość zmiennej user na "" 
-
-// account creating and login
 
 function clearDisplayMessages(){
   document.getElementById('displayMessage').innerHTML = '';
@@ -188,44 +184,50 @@ function clearDisplayMessages(){
 
 function cleanCreateAccInput(){
   document.getElementById('createAccount').value = "";
+  document.getElementById('loginPass').value = "";
 }
 
 function showHomePage(){
   document.getElementById("homePage").style.display = "grid";
   document.getElementById("addTask").style.display='none';
-  document.getElementById("logoutForm").style.display = 'none';
+  // document.getElementById("logoutForm").style.display = 'none';
 }
 
 function cleanLogin(){
   document.getElementById('login').value = "";
+  document.getElementById('pass').value = "";
+
 }
 
 async function showFormAndTasksOnLogin(){
-  let taskList = await getTasks(url, users, user, tasksApi);
+  let taskList = await getTasks(url, users, tasksApi, user);
   clearTaskList();
   displayTaskList(taskList);
   document.getElementById("homePage").style.display = "none";
   document.getElementById("addTask").style.display='grid';
-  document.getElementById("logoutForm").style.display = 'block';
+  // document.getElementById("logoutForm").style.display = 'block';
 }
 
 function logOutAcc(){
   user = ""
   showHomePage();
-  document.getElementById("logoutForm").style.display = 'none';
+  // document.getElementById("logoutForm").style.display = 'none';
 }
 
 async function preventInputSendingHandler(event){
   if (event.key === "Enter") {
     event.preventDefault();
-    // wsadzić tu funkcję która loguje albo tworzy konto? 
   }
 }
 
-async function createAcc(url, users, userAccName){
+async function createAcc(url, users, userAccName, password){
+  let credatials = {
+    login: userAccName,
+    password: password
+  }
   let response = await fetch(url + users, {
     method: 'PUT',
-    body: JSON.stringify(userAccName),
+    body: JSON.stringify(credatials),
     headers: {
       'Content-Type': 'application/json'
     }
@@ -238,11 +240,16 @@ async function createAcc(url, users, userAccName){
   return answer;
 }
 
-async function logToAcc(url, users, accId) {
-  let response = await fetch(url + users + accId, {
+async function logToAcc(url, users, accId, password) {
+  let credatials = {
+    login: accId,
+    password: password
+  }
+  let response = await fetch(url + users, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(credatials)
     }
   });
   if (!response.ok) {
@@ -255,13 +262,19 @@ async function logToAcc(url, users, accId) {
 
 async function createAccountHandler(event){ 
   let accName = document.getElementById('createAccount').value;
+  let pass = document.getElementById('loginPass').value;
   console.log("userName: ", accName)
   if (!accName || accName ==""){
     clearDisplayMessages();
     document.getElementById('displayMessage').innerHTML = 'Account username cannot be empty.'
     return;
   }
-  let account = await createAcc(url, users, accName);
+  if (!pass || pass == "" || pass.length < 5){
+    clearDisplayMessages();
+    document.getElementById('displayMessage').innerHTML = 'Password must have at least 5 letters.'
+    return;
+  }
+  let account = await createAcc(url, users, accName, pass);
   console.log("tripUrl, accUrl, userName: ", users, accName)
   console.log("account: ", account);
   cleanCreateAccInput()
@@ -278,20 +291,26 @@ async function createAccountHandler(event){
 
 async function loginToAccHandler(event){
   let userId = document.getElementById('login').value;
+  let pass = document.getElementById('pass').value;
   console.log( "Login user acc: ", userId)
   if (!userId || userId ==""){
     clearDisplayMessages();
     document.getElementById('displayMessage').innerHTML = 'Login cannot be empty.'
     return;
   }
-  let accExists = await logToAcc(url, users, userId);
+  if (!pass || pass == "" || pass.length < 5){
+    clearDisplayMessages();
+    document.getElementById('displayMessage').innerHTML = 'Password must have at least 5 letters '
+    return;
+  }
+  let accExists = await logToAcc(url, users, userId, pass);
   console.log("login, account is created: ", accExists.isCreated)
   cleanLogin()
   if (!accExists.isCreated){
     clearDisplayMessages();
     document.getElementById('displayMessage').innerHTML = 'Account: ' + userId + " doesn't exist. Please create your account."
   } else {
-    user = userId;
+    user = accExists.token;
     console.log("logged to : ", user)
     clearDisplayMessages();
     // document.getElementById('jestesZalogowana').innerHTML = 'Jesteś zalogowana, a tu są twoje fajoskie wycieczki'

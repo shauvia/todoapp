@@ -17,13 +17,27 @@ font-family: 'Tajawal', sans-serif; */
 
 #addTask {
   outline: 1px solid yellow;
-  margin-top: 10em;
-  display: grid; 
+  display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
   grid-template-areas:
-   'formAddTask'
-   'list';
+    'logoutbtn'
+    'formAddTask'
+    'list';
+}
+
+#logoutButton{
+  grid-area: 'logoutbtn';
+  background-color: rgb(245, 93, 62);
+  height: 4em;
+  width: 6em;
+  padding: 0;
+  border: 0;
+  /* background-color: rgba(12, 48, 68, 0.781); */
+  color: aliceblue;
+  justify-self: end;
+  margin-top: 3em;
+  margin-right: 2em;
 }
 
 #taskForm{
@@ -32,10 +46,11 @@ font-family: 'Tajawal', sans-serif; */
   display: grid;
   width: 25em;
   justify-self: center;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   column-gap: 1%;
   grid-template-areas: 
    'taskInput taskBtn';
+  margin-top: 10em;
 }
 
 #task {
@@ -64,6 +79,7 @@ font-family: 'Tajawal', sans-serif; */
   color: white;
   cursor: pointer;
 }
+
 #horizontal, #vertical {
   width: 100%;
   height: 2px;
@@ -149,27 +165,32 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
 }
 
 #homePage{
-  /* outline: 1px solid green; */
+  outline: 1px solid green;
   display: grid;
-  grid-template-rows: repeat(2, auto);
-  column-gap: 5%;
+  grid-template-rows: repeat(3, auto);
+  row-gap: 6em;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    'logForm'
-    'creAccForm';
+    'creAccForm'
+    'message'
+    'logForm';
   width: 30vw;
   margin: 5em auto 0 auto;
 }
 
 #createAccForm {
+  outline: 1px solid red;
   grid-area: creAccForm;
   justify-self: start;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, auto);
-  column-gap: 5%;
+  grid-template-rows: repeat(3, auto);
+  column-gap: 1em;
+  row-gap: 1em;
   grid-template-areas:
     'crAccLab crAccLab'
-    'crAccBtn crAcc';
+    'crAcc .'
+    'logPass crAccBtn';
   width: 30em;
 }
 
@@ -177,8 +198,8 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   grid-area: crAccLab;
   font-size: 2em;
   margin-bottom: 1em;
-  margin-top: 8em;
-  justify-self: end;
+  /* margin-top: 2em; */
+  /* justify-self: end; */
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -191,9 +212,16 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   font-family: 'Space Grotesk', sans-serif;
 }
 
+#loginPass {
+  grid-area: logPass;
+  padding: 0;
+  border: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 #createAccBtn {
   grid-area: crAccBtn;
-  justify-self: end;
+  /* justify-self: end; */
   /* margin-top: 1.5em; */
   height: 4em;
   width: 6em;
@@ -209,16 +237,28 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   cursor: pointer;
 }
 
+#displayMessage {
+  margin-top: 1em;
+  grid-area: message;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  font-family: 'Space Grotesk', sans-serif;
+  color:rgb(235, 235, 250)
+}
+
 #loginForm {
+  outline: 1px solid brown;
   grid-area: logForm;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
   grid-template-areas:
     'logLab logLab'
-    'login logBtn';
+    'login .'
+    'pass logBtn';
   width: 30em;
-  column-gap: 5%;
+  column-gap: 1em;
+  row-gap: 1em;
 }
 
 #loginLabel {
@@ -230,6 +270,13 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
 #login {
   grid-area: login;
   height: 4em;
+  padding: 0;
+  border: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#pass {
+  grid-area: pass;
   padding: 0;
   border: 0;
   font-family: 'Space Grotesk', sans-serif;
@@ -249,4 +296,8 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   background-color: rgba(11, 36, 49, 0.781);
   color: white;
   cursor: pointer;
+}
+
+#logoutButton{
+
 }

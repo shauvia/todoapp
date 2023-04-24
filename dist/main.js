@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  margin-top: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(2, auto);\r\n  grid-template-areas:\r\n   'formAddTask'\r\n   'list';\r\n}\r\n\r\n#taskForm{\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign form https://www.youtube.com/watch?v=xug428_PyQ0 */\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  /* outline: 2px solid rgb(255, 0, 140);; */\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto 30px;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff;\r\n  margin: 0;\r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  transform: translateY(-0.075em);  /*moves checkbox a bit higher to make one line with a label */\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.6em;\r\n  height: 0.6em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}\r\n\r\n/*delete button styling https://codepen.io/jcsb/pen/qzPyRV */\r\n\r\n.btn-delete {\r\n  align-items: center;\r\n  background: none;\r\n  border: none;\r\n  padding: 0;\r\n  cursor: pointer;\r\n  color: rgb(255, 166, 0);\r\n}\r\n.btn-delete > .delete_button_hovered {\r\n  display: none;\r\n}\r\n\r\n.btn-delete:hover > .delete_button_hovered {\r\n  display: block;\r\n}\r\n.btn-delete:hover > .delete_button {\r\n  display: none;\r\n}\r\n\r\n#homePage{\r\n  /* outline: 1px solid green; */\r\n  display: grid;\r\n  grid-template-rows: repeat(2, auto);\r\n  column-gap: 5%;\r\n  grid-template-areas:\r\n    'logForm'\r\n    'creAccForm';\r\n  width: 30vw;\r\n  margin: 5em auto 0 auto;\r\n}\r\n\r\n#createAccForm {\r\n  grid-area: creAccForm;\r\n  justify-self: start;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(2, auto);\r\n  column-gap: 5%;\r\n  grid-template-areas:\r\n    'crAccLab crAccLab'\r\n    'crAccBtn crAcc';\r\n  width: 30em;\r\n}\r\n\r\n#createAccLabel {\r\n  grid-area: crAccLab;\r\n  font-size: 2em;\r\n  margin-bottom: 1em;\r\n  margin-top: 8em;\r\n  justify-self: end;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccount {\r\n  grid-area: crAcc;\r\n  /* margin-top: 2em; */\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccBtn {\r\n  grid-area: crAccBtn;\r\n  justify-self: end;\r\n  /* margin-top: 1.5em; */\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(12, 48, 68, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#createAccBtn:hover {\r\n  background-color: rgba(41, 134, 184, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#loginForm {\r\n  grid-area: logForm;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(2, auto);\r\n  grid-template-areas:\r\n    'logLab logLab'\r\n    'login logBtn';\r\n  width: 30em;\r\n  column-gap: 5%;\r\n}\r\n\r\n#loginLabel {\r\n  grid-area: logLab;\r\n  margin-bottom: 1em;\r\n  font-size: 2em;\r\n}\r\n\r\n#login {\r\n  grid-area: login;\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#loginButton {\r\n  grid-area: logBtn;\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(26, 99, 138, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#loginButton:hover {\r\n  background-color: rgba(11, 36, 49, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/client/styles/style.css"],"names":[],"mappings":"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","sourcesContent":["/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  margin-top: 10em;\r\n  display: grid; \r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(2, auto);\r\n  grid-template-areas:\r\n   'formAddTask'\r\n   'list';\r\n}\r\n\r\n#taskForm{\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr ;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign form https://www.youtube.com/watch?v=xug428_PyQ0 */\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  /* outline: 2px solid rgb(255, 0, 140);; */\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto 30px;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff;\r\n  margin: 0;\r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  transform: translateY(-0.075em);  /*moves checkbox a bit higher to make one line with a label */\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.6em;\r\n  height: 0.6em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}\r\n\r\n/*delete button styling https://codepen.io/jcsb/pen/qzPyRV */\r\n\r\n.btn-delete {\r\n  align-items: center;\r\n  background: none;\r\n  border: none;\r\n  padding: 0;\r\n  cursor: pointer;\r\n  color: rgb(255, 166, 0);\r\n}\r\n.btn-delete > .delete_button_hovered {\r\n  display: none;\r\n}\r\n\r\n.btn-delete:hover > .delete_button_hovered {\r\n  display: block;\r\n}\r\n.btn-delete:hover > .delete_button {\r\n  display: none;\r\n}\r\n\r\n#homePage{\r\n  /* outline: 1px solid green; */\r\n  display: grid;\r\n  grid-template-rows: repeat(2, auto);\r\n  column-gap: 5%;\r\n  grid-template-areas:\r\n    'logForm'\r\n    'creAccForm';\r\n  width: 30vw;\r\n  margin: 5em auto 0 auto;\r\n}\r\n\r\n#createAccForm {\r\n  grid-area: creAccForm;\r\n  justify-self: start;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(2, auto);\r\n  column-gap: 5%;\r\n  grid-template-areas:\r\n    'crAccLab crAccLab'\r\n    'crAccBtn crAcc';\r\n  width: 30em;\r\n}\r\n\r\n#createAccLabel {\r\n  grid-area: crAccLab;\r\n  font-size: 2em;\r\n  margin-bottom: 1em;\r\n  margin-top: 8em;\r\n  justify-self: end;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccount {\r\n  grid-area: crAcc;\r\n  /* margin-top: 2em; */\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccBtn {\r\n  grid-area: crAccBtn;\r\n  justify-self: end;\r\n  /* margin-top: 1.5em; */\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(12, 48, 68, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#createAccBtn:hover {\r\n  background-color: rgba(41, 134, 184, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#loginForm {\r\n  grid-area: logForm;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(2, auto);\r\n  grid-template-areas:\r\n    'logLab logLab'\r\n    'login logBtn';\r\n  width: 30em;\r\n  column-gap: 5%;\r\n}\r\n\r\n#loginLabel {\r\n  grid-area: logLab;\r\n  margin-bottom: 1em;\r\n  font-size: 2em;\r\n}\r\n\r\n#login {\r\n  grid-area: login;\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#loginButton {\r\n  grid-area: logBtn;\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(26, 99, 138, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#loginButton:hover {\r\n  background-color: rgba(11, 36, 49, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(3, auto);\r\n  grid-template-areas:\r\n    'logoutbtn'\r\n    'formAddTask'\r\n    'list';\r\n}\r\n\r\n#logoutButton{\r\n  grid-area: 'logoutbtn';\r\n  background-color: rgb(245, 93, 62);\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  /* background-color: rgba(12, 48, 68, 0.781); */\r\n  color: aliceblue;\r\n  justify-self: end;\r\n  margin-top: 3em;\r\n  margin-right: 2em;\r\n}\r\n\r\n#taskForm{\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n  margin-top: 10em;\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign form https://www.youtube.com/watch?v=xug428_PyQ0 */\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  /* outline: 2px solid rgb(255, 0, 140);; */\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto 30px;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff;\r\n  margin: 0;\r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  transform: translateY(-0.075em);  /*moves checkbox a bit higher to make one line with a label */\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.6em;\r\n  height: 0.6em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}\r\n\r\n/*delete button styling https://codepen.io/jcsb/pen/qzPyRV */\r\n\r\n.btn-delete {\r\n  align-items: center;\r\n  background: none;\r\n  border: none;\r\n  padding: 0;\r\n  cursor: pointer;\r\n  color: rgb(255, 166, 0);\r\n}\r\n.btn-delete > .delete_button_hovered {\r\n  display: none;\r\n}\r\n\r\n.btn-delete:hover > .delete_button_hovered {\r\n  display: block;\r\n}\r\n.btn-delete:hover > .delete_button {\r\n  display: none;\r\n}\r\n\r\n#homePage{\r\n  outline: 1px solid green;\r\n  display: grid;\r\n  grid-template-rows: repeat(3, auto);\r\n  row-gap: 6em;\r\n  grid-template-columns: 1fr;\r\n  grid-template-areas:\r\n    'creAccForm'\r\n    'message'\r\n    'logForm';\r\n  width: 30vw;\r\n  margin: 5em auto 0 auto;\r\n}\r\n\r\n#createAccForm {\r\n  outline: 1px solid red;\r\n  grid-area: creAccForm;\r\n  justify-self: start;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(3, auto);\r\n  column-gap: 1em;\r\n  row-gap: 1em;\r\n  grid-template-areas:\r\n    'crAccLab crAccLab'\r\n    'crAcc .'\r\n    'logPass crAccBtn';\r\n  width: 30em;\r\n}\r\n\r\n#createAccLabel {\r\n  grid-area: crAccLab;\r\n  font-size: 2em;\r\n  margin-bottom: 1em;\r\n  /* margin-top: 2em; */\r\n  /* justify-self: end; */\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccount {\r\n  grid-area: crAcc;\r\n  /* margin-top: 2em; */\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#loginPass {\r\n  grid-area: logPass;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccBtn {\r\n  grid-area: crAccBtn;\r\n  /* justify-self: end; */\r\n  /* margin-top: 1.5em; */\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(12, 48, 68, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#createAccBtn:hover {\r\n  background-color: rgba(41, 134, 184, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#displayMessage {\r\n  margin-top: 1em;\r\n  grid-area: message;\r\n  font-size: 1.5em;\r\n  margin-bottom: 1em;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  color:rgb(235, 235, 250)\r\n}\r\n\r\n#loginForm {\r\n  outline: 1px solid brown;\r\n  grid-area: logForm;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(3, auto);\r\n  grid-template-areas:\r\n    'logLab logLab'\r\n    'login .'\r\n    'pass logBtn';\r\n  width: 30em;\r\n  column-gap: 1em;\r\n  row-gap: 1em;\r\n}\r\n\r\n#loginLabel {\r\n  grid-area: logLab;\r\n  margin-bottom: 1em;\r\n  font-size: 2em;\r\n}\r\n\r\n#login {\r\n  grid-area: login;\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#pass {\r\n  grid-area: pass;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#loginButton {\r\n  grid-area: logBtn;\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(26, 99, 138, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#loginButton:hover {\r\n  background-color: rgba(11, 36, 49, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#logoutButton{\r\n\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/client/styles/style.css"],"names":[],"mappings":"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","sourcesContent":["/* Charcoal rgb(38, 70, 83);\r\nPersian Green rgb(42, 157, 143)\r\nMaize Crayola rgb(233, 196, 106)\r\nSandy Brown rgb(244, 162, 97)\r\nBurnt Sienna rgb(231, 111, 81) */\r\n\r\n\r\nbody {\r\n  background: rgb(98,131,149);\r\n  background: linear-gradient(153deg, rgba(98,131,149,1) 15%, rgba(217,229,214,1) 66%);\r\n  height: 100vh;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  /* font-size: 1em; */\r\n}\r\n/* \r\nfont-family: 'Tajawal', sans-serif; */\r\n\r\n#addTask {\r\n  outline: 1px solid yellow;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: repeat(3, auto);\r\n  grid-template-areas:\r\n    'logoutbtn'\r\n    'formAddTask'\r\n    'list';\r\n}\r\n\r\n#logoutButton{\r\n  grid-area: 'logoutbtn';\r\n  background-color: rgb(245, 93, 62);\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  /* background-color: rgba(12, 48, 68, 0.781); */\r\n  color: aliceblue;\r\n  justify-self: end;\r\n  margin-top: 3em;\r\n  margin-right: 2em;\r\n}\r\n\r\n#taskForm{\r\n  outline: 2px solid rgb(0, 204, 255);\r\n  grid-area: formAddTask;\r\n  display: grid;\r\n  width: 25em;\r\n  justify-self: center;\r\n  grid-template-columns: 1fr 1fr;\r\n  column-gap: 1%;\r\n  grid-template-areas: \r\n   'taskInput taskBtn';\r\n  margin-top: 10em;\r\n}\r\n\r\n#task {\r\n  grid-area: taskInput;\r\n  width: 23em;\r\n  height: 3em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#addTaskBtn { /* button with plus sign form https://www.youtube.com/watch?v=xug428_PyQ0 */\r\n  grid-area: taskBtn;\r\n  background-color: rgb(245, 93, 62);\r\n  border: none;\r\n  transition-duration: 0.4s;\r\n  width: 3em;\r\n  height: 3em;\r\n  padding: 12px;\r\n  color: rgb(243, 243, 244);\r\n  justify-self: center;\r\n}\r\n\r\n#addTaskBtn:hover {\r\n  background-color: rgb(150, 64, 47); \r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#horizontal, #vertical {\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: aliceblue;\r\n}\r\n\r\n#vertical {\r\n  position: relative;\r\n  bottom: 2px;\r\n  transform: rotate(90deg);\r\n}\r\n\r\n#taskList {\r\n  grid-area: list;\r\n  justify-self: center;\r\n  width: 25em;\r\n  margin-top: 2em;\r\n  /* outline: 2px solid rgb(255, 0, 140);; */\r\n}\r\n\r\n#taskList li {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin-top: 1em;\r\n  font-size: 1.2em;\r\n  height: 2.5em;\r\n  border-radius: 5px;\r\n  display: grid;\r\n  grid-template-columns: 1em auto 30px;\r\n  gap: 0.5em;\r\n  background-color: rgba(98, 131, 149, 0.781);\r\n}\r\n\r\ninput[type=\"checkbox\"] { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  appearance: none;\r\n  background-color: #fff;\r\n  margin: 0;\r\n  font: inherit;\r\n  color: rgba(15, 64, 90, 0.781);\r\n  width: 1.15em;\r\n  height: 1.15em;\r\n  border: 0.13em solid currentColor;\r\n  border-radius: 0.15em;\r\n  transform: translateY(-0.075em);  /*moves checkbox a bit higher to make one line with a label */\r\n  display: grid;\r\n  place-content: center;\r\n}\r\n\r\ninput[type=\"checkbox\"]::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  content: \"\";\r\n  width: 0.6em;\r\n  height: 0.6em;\r\n  transform: scale(0);\r\n  transition: 120ms transform ease-in-out;\r\n  background-color: CanvasText;\r\n  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked::before { /* checkbox styling from https://moderncss.dev/pure-css-custom-checkbox-style/ */\r\n  transform: scale(1);\r\n}\r\n\r\n/*delete button styling https://codepen.io/jcsb/pen/qzPyRV */\r\n\r\n.btn-delete {\r\n  align-items: center;\r\n  background: none;\r\n  border: none;\r\n  padding: 0;\r\n  cursor: pointer;\r\n  color: rgb(255, 166, 0);\r\n}\r\n.btn-delete > .delete_button_hovered {\r\n  display: none;\r\n}\r\n\r\n.btn-delete:hover > .delete_button_hovered {\r\n  display: block;\r\n}\r\n.btn-delete:hover > .delete_button {\r\n  display: none;\r\n}\r\n\r\n#homePage{\r\n  outline: 1px solid green;\r\n  display: grid;\r\n  grid-template-rows: repeat(3, auto);\r\n  row-gap: 6em;\r\n  grid-template-columns: 1fr;\r\n  grid-template-areas:\r\n    'creAccForm'\r\n    'message'\r\n    'logForm';\r\n  width: 30vw;\r\n  margin: 5em auto 0 auto;\r\n}\r\n\r\n#createAccForm {\r\n  outline: 1px solid red;\r\n  grid-area: creAccForm;\r\n  justify-self: start;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(3, auto);\r\n  column-gap: 1em;\r\n  row-gap: 1em;\r\n  grid-template-areas:\r\n    'crAccLab crAccLab'\r\n    'crAcc .'\r\n    'logPass crAccBtn';\r\n  width: 30em;\r\n}\r\n\r\n#createAccLabel {\r\n  grid-area: crAccLab;\r\n  font-size: 2em;\r\n  margin-bottom: 1em;\r\n  /* margin-top: 2em; */\r\n  /* justify-self: end; */\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccount {\r\n  grid-area: crAcc;\r\n  /* margin-top: 2em; */\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#loginPass {\r\n  grid-area: logPass;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#createAccBtn {\r\n  grid-area: crAccBtn;\r\n  /* justify-self: end; */\r\n  /* margin-top: 1.5em; */\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(12, 48, 68, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#createAccBtn:hover {\r\n  background-color: rgba(41, 134, 184, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#displayMessage {\r\n  margin-top: 1em;\r\n  grid-area: message;\r\n  font-size: 1.5em;\r\n  margin-bottom: 1em;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n  color:rgb(235, 235, 250)\r\n}\r\n\r\n#loginForm {\r\n  outline: 1px solid brown;\r\n  grid-area: logForm;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  grid-template-rows: repeat(3, auto);\r\n  grid-template-areas:\r\n    'logLab logLab'\r\n    'login .'\r\n    'pass logBtn';\r\n  width: 30em;\r\n  column-gap: 1em;\r\n  row-gap: 1em;\r\n}\r\n\r\n#loginLabel {\r\n  grid-area: logLab;\r\n  margin-bottom: 1em;\r\n  font-size: 2em;\r\n}\r\n\r\n#login {\r\n  grid-area: login;\r\n  height: 4em;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#pass {\r\n  grid-area: pass;\r\n  padding: 0;\r\n  border: 0;\r\n  font-family: 'Space Grotesk', sans-serif;\r\n}\r\n\r\n#loginButton {\r\n  grid-area: logBtn;\r\n  height: 4em;\r\n  width: 6em;\r\n  padding: 0;\r\n  border: 0;\r\n  background-color: rgba(26, 99, 138, 0.781);\r\n  color: aliceblue;\r\n}\r\n\r\n#loginButton:hover {\r\n  background-color: rgba(11, 36, 49, 0.781);\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n\r\n#logoutButton{\r\n\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -490,8 +490,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initializeForms": () => (/* binding */ initializeForms)
 /* harmony export */ });
 const url = ""; 
-const users = "/users/"
-const tasksApi = "/tasks/"
+const users = "/users"
+const tasksApi = "/tasks"
 let user = "";
 // const postTask = "/task"
 
@@ -526,7 +526,7 @@ function displayTaskList(tasks){
     console.log("displayTaskLis: taskId",taskId);
     let eventHandler = async (event) => {
       console.log("changeStatus, address: ", url+users+user+tasksApi+taskId+input.checked)
-      await postStatusChange(url, users, user, tasksApi,taskId,input.checked);
+      await postStatusChange(url, users, tasksApi, taskId, input.checked, user);
     };
     input.addEventListener('click', eventHandler);
     let button = document.createElement("button");
@@ -536,9 +536,9 @@ function displayTaskList(tasks){
     let spanDeleteBtnHovered = document.createElement("span");
     spanDeleteBtnHovered.classList.add("mdi", "mdi-delete-empty", "mdi-24px", "delete_button_hovered")
     let deleteHandler = async (e) => {
-      await removeTask(url, users, user, tasksApi, taskId);
+      await removeTask(url, users, tasksApi, taskId, user);
       clearTaskList();
-      let taskList = await getTasks(url, users, user, tasksApi)
+      let taskList = await getTasks(url, users, tasksApi, user);
       displayTaskList(taskList);
     }
     button.addEventListener('click',  deleteHandler);
@@ -551,12 +551,13 @@ function displayTaskList(tasks){
   }
 }
 
-async function removeTask(url, users, accName, tasksApi, taskNum){
-  console.log("removeTask: url, tasks, taskId",url+users+accName+tasksApi+taskNum);
-  let response = await fetch(url+users+accName+tasksApi+taskNum, { 
+async function removeTask(url, users, tasksApi, taskNum, token){
+  console.log("removeTask: url, tasks, taskId",url+users+tasksApi+taskNum);
+  let response = await fetch(url+users+tasksApi+'/'+taskNum, { 
     method: 'DELETE', 
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -565,20 +566,21 @@ async function removeTask(url, users, accName, tasksApi, taskNum){
   }
 }
 
-async function postStatusChange(url, users, accName, tasksApi, taskId, status){
+async function postStatusChange(url, users, tasksApi, taskId, status, token){
   console.log ("postStatusChange, status: ", status)
   
   const  inputStatus  = {
     userInpStat: status
   }
 
-  console.log("postStatusChange, address: ", url+users+accName+tasksApi+taskId) 
+  console.log("postStatusChange, address: ", url+users+tasksApi+taskId) 
   
-  let response = await fetch(url+users+accName+tasksApi+taskId, { 
+  let response = await fetch(url+users+tasksApi+'/'+taskId, { 
     method: 'POST' , 
     body: JSON.stringify(inputStatus),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -603,14 +605,15 @@ function clearTaskList(){
   }
 }
 
-async function addTask(url, users, accName, tasksApi, uInput){
-  console.log("addTask", users, accName, tasksApi, uInput)
+async function addTask(url, users, tasksApi, uInput, token){
+  console.log("addTask", users, uInput, token)
   // console.log("app.js,addTask URL: ", url+postTask,)
-  let response = await fetch(url+users+accName+tasksApi, { 
+  let response = await fetch(url+users+tasksApi, { 
     method: 'POST' , 
     body: JSON.stringify(uInput),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -622,12 +625,13 @@ async function addTask(url, users, accName, tasksApi, uInput){
   return content;
 }
 
-async function getTasks(url, users, accName, tasksApi){
-  console.log('getTasks', users, accName, tasksApi);
-  let response = await fetch(url+users+accName+tasksApi, {
+async function getTasks(url, users, tasksApi, token){
+  console.log('getTasks', users, token, tasksApi);
+  let response = await fetch(url+users+tasksApi, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(token)
     }
   });
   if (!response.ok) {
@@ -656,22 +660,14 @@ async function addTaskHandler(event){
   }
   const userData = gatherUserInput(userInput);
   clearUserInput()
-  await addTask(url, users, user, tasksApi, userData);
+  await addTask(url, users, tasksApi, userData, user);
   console.log("1");
-  let listOfTasks = await getTasks(url, users, user, tasksApi);
+  let listOfTasks = await getTasks(url, users, tasksApi, user);
   console.log("listOfTasks", listOfTasks)
   clearTaskList();
   displayTaskList(listOfTasks);
 }
 
-// function initializeForms() {
-//   document.getElementById('addTaskBtn').addEventListener('click', addTaskHandler);
-//   window.addEventListener('load', loadWindowHandler);
-// }
-
-//pamiętac aby skonczeniu wszystkiego zmienic wartość zmiennej user na "" 
-
-// account creating and login
 
 function clearDisplayMessages(){
   document.getElementById('displayMessage').innerHTML = '';
@@ -679,44 +675,50 @@ function clearDisplayMessages(){
 
 function cleanCreateAccInput(){
   document.getElementById('createAccount').value = "";
+  document.getElementById('loginPass').value = "";
 }
 
 function showHomePage(){
   document.getElementById("homePage").style.display = "grid";
   document.getElementById("addTask").style.display='none';
-  document.getElementById("logoutForm").style.display = 'none';
+  // document.getElementById("logoutForm").style.display = 'none';
 }
 
 function cleanLogin(){
   document.getElementById('login').value = "";
+  document.getElementById('pass').value = "";
+
 }
 
 async function showFormAndTasksOnLogin(){
-  let taskList = await getTasks(url, users, user, tasksApi);
+  let taskList = await getTasks(url, users, tasksApi, user);
   clearTaskList();
   displayTaskList(taskList);
   document.getElementById("homePage").style.display = "none";
   document.getElementById("addTask").style.display='grid';
-  document.getElementById("logoutForm").style.display = 'block';
+  // document.getElementById("logoutForm").style.display = 'block';
 }
 
 function logOutAcc(){
   user = ""
   showHomePage();
-  document.getElementById("logoutForm").style.display = 'none';
+  // document.getElementById("logoutForm").style.display = 'none';
 }
 
 async function preventInputSendingHandler(event){
   if (event.key === "Enter") {
     event.preventDefault();
-    // wsadzić tu funkcję która loguje albo tworzy konto? 
   }
 }
 
-async function createAcc(url, users, userAccName){
+async function createAcc(url, users, userAccName, password){
+  let credatials = {
+    login: userAccName,
+    password: password
+  }
   let response = await fetch(url + users, {
     method: 'PUT',
-    body: JSON.stringify(userAccName),
+    body: JSON.stringify(credatials),
     headers: {
       'Content-Type': 'application/json'
     }
@@ -729,11 +731,16 @@ async function createAcc(url, users, userAccName){
   return answer;
 }
 
-async function logToAcc(url, users, accId) {
-  let response = await fetch(url + users + accId, {
+async function logToAcc(url, users, accId, password) {
+  let credatials = {
+    login: accId,
+    password: password
+  }
+  let response = await fetch(url + users, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": JSON.stringify(credatials)
     }
   });
   if (!response.ok) {
@@ -746,13 +753,19 @@ async function logToAcc(url, users, accId) {
 
 async function createAccountHandler(event){ 
   let accName = document.getElementById('createAccount').value;
+  let pass = document.getElementById('loginPass').value;
   console.log("userName: ", accName)
   if (!accName || accName ==""){
     clearDisplayMessages();
     document.getElementById('displayMessage').innerHTML = 'Account username cannot be empty.'
     return;
   }
-  let account = await createAcc(url, users, accName);
+  if (!pass || pass == "" || pass.length < 5){
+    clearDisplayMessages();
+    document.getElementById('displayMessage').innerHTML = 'Password must have at least 5 letters.'
+    return;
+  }
+  let account = await createAcc(url, users, accName, pass);
   console.log("tripUrl, accUrl, userName: ", users, accName)
   console.log("account: ", account);
   cleanCreateAccInput()
@@ -769,20 +782,26 @@ async function createAccountHandler(event){
 
 async function loginToAccHandler(event){
   let userId = document.getElementById('login').value;
+  let pass = document.getElementById('pass').value;
   console.log( "Login user acc: ", userId)
   if (!userId || userId ==""){
     clearDisplayMessages();
     document.getElementById('displayMessage').innerHTML = 'Login cannot be empty.'
     return;
   }
-  let accExists = await logToAcc(url, users, userId);
+  if (!pass || pass == "" || pass.length < 5){
+    clearDisplayMessages();
+    document.getElementById('displayMessage').innerHTML = 'Password must have at least 5 letters '
+    return;
+  }
+  let accExists = await logToAcc(url, users, userId, pass);
   console.log("login, account is created: ", accExists.isCreated)
   cleanLogin()
   if (!accExists.isCreated){
     clearDisplayMessages();
     document.getElementById('displayMessage').innerHTML = 'Account: ' + userId + " doesn't exist. Please create your account."
   } else {
-    user = userId;
+    user = accExists.token;
     console.log("logged to : ", user)
     clearDisplayMessages();
     // document.getElementById('jestesZalogowana').innerHTML = 'Jesteś zalogowana, a tu są twoje fajoskie wycieczki'

@@ -26,12 +26,11 @@ function listening(){
 // let taskNum = 0;
 
 // poprawić wszystko w oparciu o konto użytkownika
-app.post('/users/:accId/tasks', async function(req, res){
+app.post('/users/tasks', async function(req, res){
   try {
-  let userId = req.params.accId;
-  console.log("account", userId);
-  let user = await loadDatafromMongo(userId);
-  let tasks = user.tasks;
+    let token = JSON.parse(req.header("Authorization"));
+    let userAcc = token.login;
+  let user = await loadDatafromMongo(userAcc);
   if (!user) {
     res.status(404).send("No such user");
     return;
@@ -60,31 +59,39 @@ app.post('/users/:accId/tasks', async function(req, res){
 
 
 
-app.get('/users/:accId/tasks', async function (req, res){
+app.get('/users/tasks', async function (req, res){
   try{
-    let userId = req.params.accId;
-    let user = await loadDatafromMongo(userId);
+    let token = JSON.parse(req.header("Authorization"));
+    let userAcc = token.login;
+    let user = await loadDatafromMongo(userAcc);
     if (!user) {
       res.status(404).send("No such user");
       return;
-    }
+    }  
+    
     let taskArr = user.tasks
     console.log("Sending tasks", taskArr.length);
     res.send(taskArr);
+    // } else {
+    //   res.status(401).send("Invalid credentials")
+    //   return;
+    // }
   } catch(error){
     console.log('Error on the server, getting task list failed: ', error)
     res.status(500).send();
   }  
 })
 
-app.post('/users/:accId/tasks/:id', async function (req, res){
+
+app.post('/users/tasks/:id', async function (req, res){
   try{
     let id = req.params.id; 
     console.log("taskID", id)
     let inputStatus = req.body.userInpStat;
-    console.log("inputStatus", req.body.userInpStat);
-    let userId = req.params.accId;
-    let user = await loadDatafromMongo(userId);
+    console.log("inputStatus", inputStatus);
+    let token = JSON.parse(req.header("Authorization"));
+    let userAcc = token.login;
+    let user = await loadDatafromMongo(userAcc);
     if (!user) {
       res.status(404).send("No such user");
       return;
@@ -107,11 +114,12 @@ app.post('/users/:accId/tasks/:id', async function (req, res){
   }
 })
 
-app.delete('/users/:accId/tasks/:id', async function (req, res){
+app.delete('/users/tasks/:id', async function (req, res){
   try{
-    let userId = req.params.accId;
     let taskNum = req.params.id;
-    let user = await loadDatafromMongo(userId);
+    let token = JSON.parse(req.header("Authorization"));
+    let userAcc = token.login;
+    let user = await loadDatafromMongo(userAcc);
     if (!user) {
       res.status(404).send("No such user");
       return;
@@ -120,8 +128,7 @@ app.delete('/users/:accId/tasks/:id', async function (req, res){
     for (let i = 0; i < taskArr.length; i++){
       if (taskNum == taskArr[i].taskId){
         taskArr.splice(i, 1);
-        await 
-        saveDataMongo(user);
+        await saveDataMongo(user);
         res.send();
       }
     }
@@ -133,7 +140,10 @@ app.delete('/users/:accId/tasks/:id', async function (req, res){
 
 app.put('/users', async function (req, res){
   try{
-    let userAccName = req.body;
+    let userAccName = req.body.login;
+    let password = req.body.password;
+    console.log("creating account,login: ", userAccName, "pass: ", password)
+
     let userExists = await loadDatafromMongo(userAccName);
     console.log("Sprawdzam czy konto istnieje", userExists);
     let accCheck = {
@@ -142,9 +152,9 @@ app.put('/users', async function (req, res){
     if (!userExists){
       let user = {
         _id : userAccName,
+        password: password,
         tasks: [],
         nextTaskId: 0,
-
       }
       await saveDataMongo(user);
       res.send(accCheck);
@@ -159,23 +169,32 @@ app.put('/users', async function (req, res){
   }  
 });
 
-app.get('/users/:accId', async function(req, res){
+app.get('/users', async function(req, res){
   try{
-    let userAcc = req.params.accId;
+    let credentials = JSON.parse(req.header("Authorization"));
+    let userAcc = credentials.login;
+    let password = credentials.password;
+    // console.log("login to acc, token:",  token, 'login: ', userAcc)
     console.log('Zczytalo', userAcc)
-    let userExists = await loadDatafromMongo(userAcc); 
-    console.log("Konto: ", userExists )
+    let user = await loadDatafromMongo(userAcc); 
+    console.log("Konto: ", user)
     let accCheck = {
-      isCreated : true
+      isCreated : true,
     };
-    if (!userExists){
+    if (!user){
       accCheck.isCreated = false;
       console.log('konto nie istnieje, accCheck: ', accCheck)
       res.send(accCheck);
-    } else {
+    }  
+    if (user._id === userAcc && user.password === password ){
       accCheck.alreadyCreated = true;
+      accCheck.token =  {
+        login: userAcc
+      };
       console.log('Juz jest ', userAcc);
       res.send(accCheck);
+    } else {
+      res.status(401).send("Invalid credentials");
     }
   }catch(error){
     res.status(500).send();
