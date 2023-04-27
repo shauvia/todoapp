@@ -22,63 +22,64 @@ function listening(){
   console.log(`runnning on localhost ${port}`);
 }
 
-// let taskArr = [];
-// let taskNum = 0;
+async function getUserfromMongo(req){
+  let credentials = JSON.parse(req.header("Authorization"));
+  let userAcc = credentials.login;
+  let user = await loadDatafromMongo(userAcc);
+  if (!user) {
+    errorToThrow = new Error();
+    errorToThrow.isUser = false;
+    throw  errorToThrow;
+  } else {
+    return user
+  }
+}
 
 // poprawić wszystko w oparciu o konto użytkownika
 app.post('/users/tasks', async function(req, res){
-  try {
-    let token = JSON.parse(req.header("Authorization"));
-    let userAcc = token.login;
-  let user = await loadDatafromMongo(userAcc);
-  if (!user) {
-    res.status(404).send("No such user");
-    return;
+  try {    
+    let user = await getUserfromMongo(req);
+    let nextTaskId = user.nextTaskId;
+    const singleTask = {
+      taskName: "",
+      checked: false,
+      taskId: -1
+    }
+    singleTask.taskId = nextTaskId;
+    nextTaskId = nextTaskId + 1;
+    user.nextTaskId = nextTaskId;
+    console.log("nextTaskId", nextTaskId)
+    singleTask.taskName = req.body.userTask;
+    user.tasks.push(singleTask);
+    console.log("user", user);
+    await saveDataMongo(user);
+    // console.log("allTasks", allTasks);
+    res.send("OK");
+  }catch(error){
+    if (error.isUser == false) {
+      res.status(404).send("No such user");
+    } else {
+      res.status(500).send();
+      console.log('Error on the server, posting task failed: ', error);
+    }
   }
-  let nextTaskId = user.nextTaskId;
-  const singleTask = {
-    taskName: "",
-    checked: false,
-    taskId: -1
-  }
-  singleTask.taskId = nextTaskId;
-  nextTaskId = nextTaskId + 1;
-  user.nextTaskId = nextTaskId;
-  console.log("nextTaskId", nextTaskId)
-  singleTask.taskName = req.body.userTask;
-  user.tasks.push(singleTask);
-  console.log("user", user);
-  await saveDataMongo(user);
-  // console.log("allTasks", allTasks);
-  res.send("OK");
-}catch(error){
-  res.status(500).send();
-  console.log('Error on the server, posting task failed: ', error);
-  }  
 })
 
 
 
 app.get('/users/tasks', async function (req, res){
   try{
-    let token = JSON.parse(req.header("Authorization"));
-    let userAcc = token.login;
-    let user = await loadDatafromMongo(userAcc);
-    if (!user) {
-      res.status(404).send("No such user");
-      return;
-    }  
-    
+    let user = await getUserfromMongo(req);
     let taskArr = user.tasks
     console.log("Sending tasks", taskArr.length);
     res.send(taskArr);
-    // } else {
-    //   res.status(401).send("Invalid credentials")
-    //   return;
-    // }
   } catch(error){
-    console.log('Error on the server, getting task list failed: ', error)
-    res.status(500).send();
+    if (error.isUser == false) {
+      res.status(404).send("No such user");
+    } else {
+      res.status(500).send();
+      console.log('Error on the server, getting task list failed: ', error)
+    } 
   }  
 })
 
@@ -89,13 +90,7 @@ app.post('/users/tasks/:id', async function (req, res){
     console.log("taskID", id)
     let inputStatus = req.body.userInpStat;
     console.log("inputStatus", inputStatus);
-    let token = JSON.parse(req.header("Authorization"));
-    let userAcc = token.login;
-    let user = await loadDatafromMongo(userAcc);
-    if (!user) {
-      res.status(404).send("No such user");
-      return;
-    }
+    let user = await getUserfromMongo(req);
     let arrOfTasks = user.tasks;
     for (let i = 0; i < arrOfTasks.length; i++){
       if (arrOfTasks[i].taskId == id) {
@@ -117,13 +112,7 @@ app.post('/users/tasks/:id', async function (req, res){
 app.delete('/users/tasks/:id', async function (req, res){
   try{
     let taskNum = req.params.id;
-    let token = JSON.parse(req.header("Authorization"));
-    let userAcc = token.login;
-    let user = await loadDatafromMongo(userAcc);
-    if (!user) {
-      res.status(404).send("No such user");
-      return;
-    }
+    let user = await getUserfromMongo(req);
     let taskArr = user.tasks
     for (let i = 0; i < taskArr.length; i++){
       if (taskNum == taskArr[i].taskId){
@@ -187,7 +176,6 @@ app.get('/users', async function(req, res){
       res.send(accCheck);
     }  
     if (user._id === userAcc && user.password === password ){
-      accCheck.alreadyCreated = true;
       accCheck.token =  {
         login: userAcc
       };

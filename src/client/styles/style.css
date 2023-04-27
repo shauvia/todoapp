@@ -12,11 +12,19 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   /* font-size: 1em; */
 }
-/* 
-font-family: 'Tajawal', sans-serif; */
+
+.inputs {
+  padding: 0;
+  border: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.labels {
+  font-size: 2em;
+  font-family: 'Space Grotesk', sans-serif;
+}
 
 #addTask {
-  outline: 1px solid yellow;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
@@ -41,7 +49,6 @@ font-family: 'Tajawal', sans-serif; */
 }
 
 #taskForm{
-  outline: 2px solid rgb(0, 204, 255);
   grid-area: formAddTask;
   display: grid;
   width: 25em;
@@ -57,9 +64,6 @@ font-family: 'Tajawal', sans-serif; */
   grid-area: taskInput;
   width: 23em;
   height: 3em;
-  padding: 0;
-  border: 0;
-  font-family: 'Space Grotesk', sans-serif;
 }
 
 #addTaskBtn { /* button with plus sign form https://www.youtube.com/watch?v=xug428_PyQ0 */
@@ -97,7 +101,6 @@ font-family: 'Tajawal', sans-serif; */
   justify-self: center;
   width: 25em;
   margin-top: 2em;
-  /* outline: 2px solid rgb(255, 0, 140);; */
 }
 
 #taskList li {
@@ -165,7 +168,6 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
 }
 
 #homePage{
-  outline: 1px solid green;
   display: grid;
   grid-template-rows: repeat(3, auto);
   row-gap: 6em;
@@ -179,7 +181,6 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
 }
 
 #createAccForm {
-  outline: 1px solid red;
   grid-area: creAccForm;
   justify-self: start;
   display: grid;
@@ -196,20 +197,13 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
 
 #createAccLabel {
   grid-area: crAccLab;
-  font-size: 2em;
   margin-bottom: 1em;
-  /* margin-top: 2em; */
-  /* justify-self: end; */
-  font-family: 'Space Grotesk', sans-serif;
 }
 
 #createAccount {
   grid-area: crAcc;
   /* margin-top: 2em; */
   height: 4em;
-  padding: 0;
-  border: 0;
-  font-family: 'Space Grotesk', sans-serif;
 }
 
 #loginPass {
@@ -247,7 +241,6 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
 }
 
 #loginForm {
-  outline: 1px solid brown;
   grid-area: logForm;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -264,22 +257,15 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
 #loginLabel {
   grid-area: logLab;
   margin-bottom: 1em;
-  font-size: 2em;
 }
 
 #login {
   grid-area: login;
   height: 4em;
-  padding: 0;
-  border: 0;
-  font-family: 'Space Grotesk', sans-serif;
 }
 
 #pass {
   grid-area: pass;
-  padding: 0;
-  border: 0;
-  font-family: 'Space Grotesk', sans-serif;
 }
 
 #loginButton {
@@ -298,6 +284,3 @@ input[type="checkbox"]:checked::before { /* checkbox styling from https://modern
   cursor: pointer;
 }
 
-#logoutButton{
-
-}
