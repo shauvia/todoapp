@@ -5,6 +5,10 @@ const cors = require('cors');
 const storage = require('./index.js');
 const saveDataMongo = storage.saveDataMongo;
 const loadDatafromMongo = storage.loadDatafromMongo;
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+// const salt = bcrypt.genSaltSync(saltRounds);
+// const hash = bcrypt.hashSync(myPlaintextPassword, salt);
 
 const app = express();
 app.use(cors());
@@ -132,7 +136,8 @@ app.put('/users', async function (req, res){
     let userAccName = req.body.login;
     let password = req.body.password;
     console.log("creating account,login: ", userAccName, "pass: ", password)
-
+    const hash = await bcrypt.hash(password, saltRounds);
+    console.log("hash", hash);
     let userExists = await loadDatafromMongo(userAccName);
     console.log("Sprawdzam czy konto istnieje", userExists);
     let accCheck = {
@@ -141,7 +146,7 @@ app.put('/users', async function (req, res){
     if (!userExists){
       let user = {
         _id : userAccName,
-        password: password,
+        passwordHash: hash,
         tasks: [],
         nextTaskId: 0,
       }
@@ -165,17 +170,22 @@ app.get('/users', async function(req, res){
     let password = credentials.password;
     // console.log("login to acc, token:",  token, 'login: ', userAcc)
     console.log('Zczytalo', userAcc)
-    let user = await loadDatafromMongo(userAcc); 
-    console.log("Konto: ", user)
+    
     let accCheck = {
       isCreated : true,
     };
+    let user = await loadDatafromMongo(userAcc);
+    console.log("Konto: ", user)
     if (!user){
       accCheck.isCreated = false;
       console.log('konto nie istnieje, accCheck: ', accCheck)
       res.send(accCheck);
-    }  
-    if (user._id === userAcc && user.password === password ){
+    } 
+
+    const match = await bcrypt.compare(password, user.passwordHash)
+    
+    
+    if (user._id === userAcc && match){
       accCheck.token =  {
         login: userAcc
       };
