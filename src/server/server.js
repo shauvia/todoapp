@@ -5,10 +5,11 @@ const cors = require('cors');
 const storage = require('./index.js');
 const saveDataMongo = storage.saveDataMongo;
 const loadDatafromMongo = storage.loadDatafromMongo;
+
+
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-// const salt = bcrypt.genSaltSync(saltRounds);
-// const hash = bcrypt.hashSync(myPlaintextPassword, salt);
+const crypto = require("crypto-js");
 
 const app = express();
 app.use(cors());
@@ -19,7 +20,7 @@ app.use(bodyParser.json({strict:false}));
 app.use(express.static('dist'));
 
 const port = process.env.PORT || 3000 // default is port 3000 (locally) but if there a different environment then use port that is default for the environment (np. strona serwowana z azurowego dysku bedzie miala domyslny port uzyty w srodowisku azura) 
-
+const key = process.env.enctyption_key
 
 function listening(){
   console.log('server runnning');
@@ -29,16 +30,26 @@ function listening(){
 async function getUserfromMongo(req){
   let credentials = JSON.parse(req.header("Authorization"));
   let userAcc = credentials.login;
-  let user = await loadDatafromMongo(userAcc);
-  if (!user) {
-    errorToThrow = new Error();
-    errorToThrow.isUser = false;
+  let encrypted = credentials.encrypted
+  const decrypted = crypto.AES.decrypt(encrypted, key).toString(crypto.enc.Utf8)
+  console.log("userAcc", userAcc, "encrypted", encrypted, "decrypted",decrypted);
+  errorToThrow = new Error();
+  // porównać userAcc do decrypted oraz poprawić we wszystkich endpointach łapanie błędu na łapanie błędu jak w endpoincie dodawanie tasku, i wysyłanie res.status(498).(invalid Token)
+  if (userAcc != decrypted){
+    errorToThrow.httpCode = 498;
+    errorToThrow.httpMsg = "Invalid Token";
     throw  errorToThrow;
   } else {
-    return user
+    let user = await loadDatafromMongo(userAcc);
+    if (!user) {
+      errorToThrow.httpCode = 404;
+      errorToThrow.httlMsg = "No such user";
+      throw  errorToThrow;
+    } else {
+      return user
+    }
   }
 }
-
 // poprawić wszystko w oparciu o konto użytkownika
 app.post('/users/tasks', async function(req, res){
   try {    
@@ -60,8 +71,8 @@ app.post('/users/tasks', async function(req, res){
     // console.log("allTasks", allTasks);
     res.send("OK");
   }catch(error){
-    if (error.isUser == false) {
-      res.status(404).send("No such user");
+    if (error.httpCode) {
+      res.status(error.httpCode).send(error.httpMsg);
     } else {
       res.status(500).send();
       console.log('Error on the server, posting task failed: ', error);
@@ -78,8 +89,8 @@ app.get('/users/tasks', async function (req, res){
     console.log("Sending tasks", taskArr.length);
     res.send(taskArr);
   } catch(error){
-    if (error.isUser == false) {
-      res.status(404).send("No such user");
+    if (error.httpCode) {
+      res.status(error.httpCode).send(error.httpMsg);
     } else {
       res.status(500).send();
       console.log('Error on the server, getting task list failed: ', error)
@@ -107,9 +118,12 @@ app.post('/users/tasks/:id', async function (req, res){
     }
     res.status(404).send("Task not found");  
   } catch(error){
-    console.log('Error on the server, changing checked failed: ', error);
-    res.status(500).send();
-    
+    if (error.httpCode) {
+      res.status(error.httpCode).send(error.httpMsg);
+    } else {
+      console.log('Error on the server, changing checked failed: ', error);
+      res.status(500).send();
+    }
   }
 })
 
@@ -126,8 +140,12 @@ app.delete('/users/tasks/:id', async function (req, res){
       }
     }
   }catch(error){
+    if (error.httpCode) {
+      res.status(error.httpCode).send(error.httpMsg);
+    } else {
     res.status(500).send();
     console.log('Error on the server, deleting task failed: ', error);
+    }
   }  
 })
 
@@ -168,7 +186,6 @@ app.get('/users', async function(req, res){
     let credentials = JSON.parse(req.header("Authorization"));
     let userAcc = credentials.login;
     let password = credentials.password;
-    // console.log("login to acc, token:",  token, 'login: ', userAcc)
     console.log('Zczytalo', userAcc)
     
     let accCheck = {
@@ -186,8 +203,12 @@ app.get('/users', async function(req, res){
     
     
     if (user._id === userAcc && match){
+      console.log(" aes", crypto.AES);
+      const encrypted = crypto.AES.encrypt(userAcc, key).toString();
+      // console.log("Encrypted data -- ", encrypted)
       accCheck.token =  {
-        login: userAcc
+        login: userAcc,
+        encrypted: encrypted
       };
       console.log('Juz jest ', userAcc);
       res.send(accCheck);
