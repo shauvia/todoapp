@@ -5,7 +5,6 @@
   "main": "c_index.js",
   "sourceType": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server/server.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-page": "webpack-dev-server  --config webpack.dev.js --open",
