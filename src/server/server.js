@@ -32,9 +32,7 @@ async function getUserfromMongo(req){
   let userAcc = credentials.login;
   let encrypted = credentials.encrypted
   const decrypted = crypto.AES.decrypt(encrypted, key).toString(crypto.enc.Utf8)
-  console.log("userAcc", userAcc, "encrypted", encrypted, "decrypted",decrypted);
   errorToThrow = new Error();
-  // porównać userAcc do decrypted oraz poprawić we wszystkich endpointach łapanie błędu na łapanie błędu jak w endpoincie dodawanie tasku, i wysyłanie res.status(498).(invalid Token)
   if (userAcc != decrypted){
     errorToThrow.httpCode = 498;
     errorToThrow.httpMsg = "Invalid Token";
@@ -50,7 +48,7 @@ async function getUserfromMongo(req){
     }
   }
 }
-// poprawić wszystko w oparciu o konto użytkownika
+
 app.post('/users/tasks', async function(req, res){
   try {    
     let user = await getUserfromMongo(req);
@@ -205,7 +203,6 @@ app.get('/users', async function(req, res){
     if (user._id === userAcc && match){
       console.log(" aes", crypto.AES);
       const encrypted = crypto.AES.encrypt(userAcc, key).toString();
-      // console.log("Encrypted data -- ", encrypted)
       accCheck.token =  {
         login: userAcc,
         encrypted: encrypted

@@ -12,7 +12,7 @@ dotenv.config();
 const { MongoClient } = require("mongodb");
 // Replace the uri string with your connection string.
 const uri = process.env.DB_URI;
-console.log("URI: ", uri);
+
 
 // async function connectToCluster(uri) {
 //   let mongoClient;
